@@ -53,8 +53,9 @@ creation passed against live local DataHub. Token reuse was reported as
 enforcement. The first-run credential was entered
 through a hidden local prompt, the owner-only token passed the live DataHub test,
 and the temporary PAT and token file were then removed. The release was rebuilt
-and checksummed from committed source. No external publication or submission
-action has been taken.
+and checksummed from committed source. The audited public repository is
+published at `https://github.com/lewismcgui/lineageguard`; remaining publication
+and submission actions are tracked in `docs/submission-checklist.md`.
 
 ## Current submission-package pass
 
