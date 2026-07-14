@@ -75,7 +75,7 @@ include = [
   "/.env.example",
   "/.dockerignore",
   "/.github",
-  "/AI_DISCLOSURE.md",
+  "/PROJECT_PROVENANCE.md",
   "/LICENSE",
   "/Makefile",
   "/README.md",
