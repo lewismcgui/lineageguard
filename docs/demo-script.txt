@@ -1,0 +1,27 @@
+0:00 to 0:18
+
+A renamed column can break a dashboard without looking dangerous in a pull request. In this synthetic demo, LineageGuard checks the dbt change against DataHub, builds a bounded compatibility fix for this supported rename, and proves the repaired project still works.
+
+0:18 to 0:43
+
+The proposal renames the contracted order_total column to gross_amount, while the downstream revenue model and an existing dbt test still use order_total. Before doing anything else, the demo builds the unchanged baseline successfully and proves the proposal fails for that exact reason.
+
+0:43 to 1:17
+
+LineageGuard uses DataHub's official MCP server to confirm the source column, follow column-level lineage to the finance revenue mart, and retrieve its owner. A small read-only GraphQL query fills the assertion gap in the pinned MCP release. The surrounding job, chart, and dashboard are visible for context, but they are not counted. Only the returned lineage, owner, and assertion evidence is scored, producing eighty-eight out of one hundred: BLOCK.
+
+1:17 to 1:45
+
+Next, LineageGuard creates a deliberately small, deterministic bridge: keep gross_amount, restore order_total as a deprecated alias, preserve its contract, and add an equality test. In a temporary copy of the dbt project, it runs seed, parse, and build. Every command exits successfully.
+
+1:45 to 2:12
+
+Passing tests alone would not prove compatibility, so LineageGuard examines the newly compiled manifest against the original baseline. The order_total contract, expression, and query context are preserved. The only remaining difference is the new required gross_amount column, scored twelve out of one hundred: PASS.
+
+2:12 to 2:39
+
+LineageGuard then writes the run ID, original and residual scores, decision, remediation status, evidence hash, source commit, and pending state into DataHub through MCP. It adds one decision tag and a readable change passport. Only after the fields, tag, and document read back correctly does the state become VERIFIED.
+
+2:39 to 2:55
+
+The final flight recorder matches the same run ID and evidence hash, then joins the change, affected model, tested patch, residual risk, and verified DataHub record. LineageGuard turns lineage context into tested migration work.

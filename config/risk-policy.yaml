@@ -1,0 +1,32 @@
+version: "1.0.0"
+
+thresholds:
+  pass_max: 24
+  review_max: 59
+
+change_severity:
+  drop_column: 45
+  incompatible_type: 40
+  rename_column: 35
+  nullable_to_required: 30
+  widening_type: 15
+  add_required_column: 12
+  add_nullable_column: 2
+
+signals:
+  assertion_contract: 25
+  critical_asset: 15
+  dashboard_or_chart: 15
+  data_job_or_flow: 12
+  sensitive_data: 10
+  direct_column_lineage: 10
+  missing_owner: 5
+  max_recent_query_usage: 10
+
+breadth:
+  formula: round_half_up_log2_one_plus_assets
+  multiplier: 3
+  maximum: 15
+
+hop_penalty: 4
+maximum_score: 100

@@ -1,0 +1,138 @@
+[build-system]
+requires = ["hatchling==1.31.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lineageguard-pr-agent"
+version = "0.1.0"
+description = "Evidence-led schema change control grounded in DataHub's context graph"
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Lewis McGuire" }]
+keywords = ["datahub", "mcp", "dbt", "lineage", "data-contracts"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Database",
+  "Topic :: Software Development :: Quality Assurance",
+]
+dependencies = [
+  "anyio>=4.9,<5",
+  "fastapi>=0.115,<1",
+  "httpx>=0.28,<1",
+  "jinja2>=3.1,<4",
+  "mcp>=1.12,<2",
+  "pydantic>=2.11,<3",
+  "pydantic-settings>=2.9,<3",
+  "pyyaml>=6.0,<7",
+  "rich>=14,<15",
+  "sqlglot>=30.8,<31",
+  "typer>=0.16,<1",
+  "uvicorn>=0.34,<1",
+]
+
+[project.optional-dependencies]
+datahub = [
+  "acryl-datahub[dbt]==1.6.0.10",
+  "mcp-server-datahub==0.6.0",
+]
+dev = [
+  "mypy>=1.16,<2",
+  "pytest>=9.0.3,<10",
+  "pytest-asyncio>=1.0,<2",
+  "pytest-cov>=6.2,<7",
+  "respx>=0.22,<1",
+  "ruff>=0.12,<1",
+  "types-pyyaml>=6.0,<7",
+]
+demo = [
+  "dbt-duckdb>=1.9,<2",
+]
+
+[project.scripts]
+lineageguard = "lineageguard.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/lineageguard"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"config/risk-policy.yaml" = "lineageguard/bundled/config/risk-policy.yaml"
+"config/structured-properties.yaml" = "lineageguard/bundled/config/structured-properties.yaml"
+"demo/acme_dbt/README.md" = "lineageguard/bundled/demo/acme_dbt/README.md"
+"demo/acme_dbt/.gitignore" = "lineageguard/bundled/demo/acme_dbt/.gitignore"
+"demo/acme_dbt/dbt_project.yml" = "lineageguard/bundled/demo/acme_dbt/dbt_project.yml"
+"demo/acme_dbt/profiles.yml" = "lineageguard/bundled/demo/acme_dbt/profiles.yml"
+"demo/acme_dbt/models" = "lineageguard/bundled/demo/acme_dbt/models"
+"demo/acme_dbt/scenario" = "lineageguard/bundled/demo/acme_dbt/scenario"
+"demo/acme_dbt/seeds" = "lineageguard/bundled/demo/acme_dbt/seeds"
+"demo/acme_dbt/tests" = "lineageguard/bundled/demo/acme_dbt/tests"
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/.env.example",
+  "/.dockerignore",
+  "/.github",
+  "/AI_DISCLOSURE.md",
+  "/LICENSE",
+  "/Makefile",
+  "/README.md",
+  "/THIRD_PARTY.md",
+  "/config",
+  "/demo/acme_dbt",
+  "/deploy",
+  "/docs",
+  "/examples",
+  "/pyproject.toml",
+  "/scripts",
+  "/src",
+  "/tasks",
+  "/tests",
+  "/uv.lock",
+]
+exclude = [
+  "/demo/acme_dbt/target",
+  "/demo/acme_dbt/*.duckdb",
+]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-config --strict-markers"
+testpaths = ["tests"]
+asyncio_mode = "auto"
+markers = [
+  "integration: requires local services or subprocesses",
+  "datahub: requires the local DataHub Core and official MCP server",
+  "slow: takes more than a few seconds",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["lineageguard"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+fail_under = 85
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF", "ASYNC", "S"]
+ignore = ["S101"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101", "S105", "S106", "S108"]
+"scripts/**/*.py" = ["S603", "S607"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+packages = ["lineageguard"]
+warn_unused_configs = true
+
+[tool.typer]
+pretty_exceptions_enable = false

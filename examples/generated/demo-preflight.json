@@ -1,0 +1,80 @@
+{
+  "after_manifest_sha256": "f348aa2bdbb3f8216b52b07bd737589e139a255991e60af93eb0201050f4ac3d",
+  "before_manifest_sha256": "f42b7fe7308f0ed5a5298dd15843d2556509ad19efa57c04fa547ab2499ba647",
+  "commands": [
+    {
+      "command": [
+        "dbt",
+        "build",
+        "--project-dir",
+        ".",
+        "--profiles-dir",
+        ".",
+        "--no-use-colors"
+      ],
+      "duration_ms": 5274,
+      "exit_code": 0,
+      "expected_exit": "zero",
+      "output_digest": "450a1447b008f1500342ebc81116a1a6e878d520b9bc63e5fe51ffae7fabf21f",
+      "output_tail": "......................... [RUN]\n14:48:57  7 of 25 PASS not_null_orders_order_total ....................................... [PASS in 0.01s]\n14:48:57  8 of 25 START test unique_orders_order_id ...................................... [RUN]\n14:48:57  8 of 25 PASS unique_orders_order_id ............................................ [PASS in 0.02s]\n14:48:57  9 of 25 START sql view model analytics_staging.stg_orders ...................... [RUN]\n14:48:57  9 of 25 OK created sql view model analytics_staging.stg_orders ................. [OK in 0.08s]\n14:48:57  10 of 25 START test accepted_values_stg_orders_currency__GBP ................... [RUN]\n14:48:57  10 of 25 PASS accepted_values_stg_orders_currency__GBP ......................... [PASS in 0.01s]\n14:48:57  11 of 25 START test accepted_values_stg_orders_status__completed__pending__cancelled__refunded  [RUN]\n14:48:57  11 of 25 PASS accepted_values_stg_orders_status__completed__pending__cancelled__refunded  [PASS in 0.02s]\n14:48:57  12 of 25 START test assert_completed_orders_have_positive_totals ............... [RUN]\n14:48:57  12 of 25 PASS assert_completed_orders_have_positive_totals ..................... [PASS in 0.01s]\n14:48:57  13 of 25 START test not_null_stg_orders_customer_id ............................ [RUN]\n14:48:57  13 of 25 PASS not_null_stg_orders_customer_id .................................. [PASS in 0.01s]\n14:48:57  14 of 25 START test not_null_stg_orders_order_date ............................. [RUN]\n14:48:57  14 of 25 PASS not_null_stg_orders_order_date ................................... [PASS in 0.01s]\n14:48:57  15 of 25 START test not_null_stg_orders_order_id ............................... [RUN]\n14:48:57  15 of 25 PASS not_null_stg_orders_order_id ..................................... [PASS in 0.01s]\n14:48:57  16 of 25 START test not_null_stg_orders_order_total ............................ [RUN]\n14:48:57  16 of 25 PASS not_null_stg_orders_order_total .................................. [PASS in 0.02s]\n14:48:57  17 of 25 START test unique_stg_orders_order_id ................................. [RUN]\n14:48:57  17 of 25 PASS unique_stg_orders_order_id ....................................... [PASS in 0.01s]\n14:48:57  18 of 25 START sql table model analytics_marts.fct_daily_revenue ............... [RUN]\n14:48:57  18 of 25 OK created sql table model analytics_marts.fct_daily_revenue .......... [OK in 0.06s]\n14:48:57  19 of 25 NO-OP exposure executive_revenue_overview ............................. [NO-OP in 0.00s]\n14:48:57  20 of 25 START test assert_daily_revenue_reconciles ............................ [RUN]\n14:48:57  20 of 25 PASS assert_daily_revenue_reconciles .................................. [PASS in 0.02s]\n14:48:57  21 of 25 START test not_null_fct_daily_revenue_currency ........................ [RUN]\n14:48:57  21 of 25 PASS not_null_fct_daily_revenue_currency .............................. [PASS in 0.02s]\n14:48:57  22 of 25 START test not_null_fct_daily_revenue_gross_revenue ................... [RUN]\n14:48:57  22 of 25 PASS not_null_fct_daily_revenue_gross_revenue ......................... [PASS in 0.02s]\n14:48:57  23 of 25 START test not_null_fct_daily_revenue_order_count ..................... [RUN]\n14:48:57  23 of 25 PASS not_null_fct_daily_revenue_order_count ........................... [PASS in 0.02s]\n14:48:57  24 of 25 START test not_null_fct_daily_revenue_order_date ...................... [RUN]\n14:48:57  24 of 25 PASS not_null_fct_daily_revenue_order_date ............................ [PASS in 0.02s]\n14:48:57  25 of 25 START test unique_fct_daily_revenue_order_date ........................ [RUN]\n14:48:57  25 of 25 PASS unique_fct_daily_revenue_order_date .............................. [PASS in 0.01s]\n14:48:57  \n14:48:58  Finished running 1 exposure, 1 seed, 1 table model, 21 data tests, 1 view model in 0 hours 0 minutes and 0.82 seconds (0.82s).\n14:48:58  \n14:48:58  Completed successfully\n14:48:58  \n14:48:58  Done. PASS=24 WARN=0 ERROR=0 SKIP=0 NO-OP=1 TOTAL=25",
+      "project": "baseline",
+      "run_results_digest": "bd3aae67cf2f70b3aa5447e7cd0aaf4cf84d791d15381dd47ce41d5c0a04ebce"
+    },
+    {
+      "command": [
+        "dbt",
+        "compile",
+        "--project-dir",
+        ".",
+        "--profiles-dir",
+        ".",
+        "--no-use-colors"
+      ],
+      "duration_ms": 5174,
+      "exit_code": 0,
+      "expected_exit": "zero",
+      "output_digest": "dc6fc656b6c3fdd84c9b2f2e6f6f293346d9c938fa6dfe8725d2d553c8e91fb0",
+      "output_tail": "14:49:00  Running with dbt=1.11.12\n14:49:00  Registered adapter: duckdb=1.10.1\n14:49:02  [WARNING]: Constraint types are not supported for view materializations and will\nbe ignored.  Set 'warn_unsupported: false' on this constraint to ignore this\nwarning.\n14:49:03  Found 2 models, 21 data tests, 1 seed, 1 exposure, 485 macros\n14:49:03  \n14:49:03  Concurrency: 1 threads (target='local')\n14:49:03",
+      "project": "proposed",
+      "run_results_digest": null
+    },
+    {
+      "command": [
+        "dbt",
+        "build",
+        "--project-dir",
+        ".",
+        "--profiles-dir",
+        ".",
+        "--no-use-colors"
+      ],
+      "duration_ms": 4650,
+      "exit_code": 1,
+      "expected_exit": "nonzero_breaking_pr",
+      "output_digest": "e25a00b118fb7e64e8010ce1c683b6d10dfa0b586464dca99f724356169bf976",
+      "output_tail": "..................... [PASS in 0.02s]\n14:49:07  7 of 25 START test not_null_orders_order_total ................................. [RUN]\n14:49:07  7 of 25 PASS not_null_orders_order_total ....................................... [PASS in 0.02s]\n14:49:07  8 of 25 START test unique_orders_order_id ...................................... [RUN]\n14:49:07  8 of 25 PASS unique_orders_order_id ............................................ [PASS in 0.02s]\n14:49:07  9 of 25 START sql view model analytics_staging.stg_orders ...................... [RUN]\n14:49:07  9 of 25 OK created sql view model analytics_staging.stg_orders ................. [OK in 0.08s]\n14:49:07  10 of 25 START test accepted_values_stg_orders_currency__GBP ................... [RUN]\n14:49:07  10 of 25 PASS accepted_values_stg_orders_currency__GBP ......................... [PASS in 0.01s]\n14:49:07  11 of 25 START test accepted_values_stg_orders_status__completed__pending__cancelled__refunded  [RUN]\n14:49:07  11 of 25 PASS accepted_values_stg_orders_status__completed__pending__cancelled__refunded  [PASS in 0.02s]\n14:49:07  12 of 25 START test assert_completed_orders_have_positive_totals ............... [RUN]\n14:49:07  12 of 25 ERROR assert_completed_orders_have_positive_totals .................... [ERROR in 0.03s]\n14:49:07  13 of 25 START test not_null_stg_orders_customer_id ............................ [RUN]\n14:49:07  13 of 25 PASS not_null_stg_orders_customer_id .................................. [PASS in 0.02s]\n14:49:07  14 of 25 START test not_null_stg_orders_gross_amount ........................... [RUN]\n14:49:07  14 of 25 PASS not_null_stg_orders_gross_amount ................................. [PASS in 0.02s]\n14:49:07  15 of 25 START test not_null_stg_orders_order_date ............................. [RUN]\n14:49:07  15 of 25 PASS not_null_stg_orders_order_date ................................... [PASS in 0.01s]\n14:49:07  16 of 25 START test not_null_stg_orders_order_id ............................... [RUN]\n14:49:07  16 of 25 PASS not_null_stg_orders_order_id ..................................... [PASS in 0.01s]\n14:49:07  17 of 25 START test unique_stg_orders_order_id ................................. [RUN]\n14:49:07  17 of 25 PASS unique_stg_orders_order_id ....................................... [PASS in 0.01s]\n14:49:07  18 of 25 SKIP relation analytics_marts.fct_daily_revenue ....................... [SKIP]\n14:49:07  19 of 25 SKIP exposure executive_revenue_overview .............................. [SKIP]\n14:49:07  20 of 25 SKIP test assert_daily_revenue_reconciles ............................. [SKIP]\n14:49:07  21 of 25 SKIP test not_null_fct_daily_revenue_currency ......................... [SKIP]\n14:49:07  22 of 25 SKIP test not_null_fct_daily_revenue_gross_revenue .................... [SKIP]\n14:49:07  23 of 25 SKIP test not_null_fct_daily_revenue_order_count ...................... [SKIP]\n14:49:07  24 of 25 SKIP test not_null_fct_daily_revenue_order_date ....................... [SKIP]\n14:49:07  25 of 25 SKIP test unique_fct_daily_revenue_order_date ......................... [SKIP]\n14:49:07  \n14:49:07  Finished running 1 exposure, 1 seed, 1 table model, 21 data tests, 1 view model in 0 hours 0 minutes and 0.73 seconds (0.73s).\n14:49:07  \n14:49:07  Completed with 1 error, 0 partial successes, and 0 warnings:\n14:49:07  \n14:49:07  Failure in test assert_completed_orders_have_positive_totals (tests/assert_completed_orders_have_positive_totals.sql)\n14:49:07    Runtime Error in test assert_completed_orders_have_positive_totals (tests/assert_completed_orders_have_positive_totals.sql)\n  Binder Error: Referenced column \"order_total\" not found in FROM clause!\n  Candidate bindings: \"order_date\", \"order_id\", \"gross_amount\", \"customer_id\"\n  \n  LINE 14:   and order_total <= 0\n                 ^\n14:49:07  \n14:49:07    compiled code at target/compiled/acme_commerce/tests/assert_completed_orders_have_positive_totals.sql\n14:49:07  \n14:49:07  Done. PASS=16 WARN=0 ERROR=1 SKIP=8 NO-OP=0 TOTAL=25",
+      "project": "proposed",
+      "run_results_digest": "86047f03be09f713e6c0571f6e8d5a1c1d329159be799cca90cbe2715640e24e"
+    },
+    {
+      "command": [
+        "dbt",
+        "compile",
+        "--project-dir",
+        ".",
+        "--profiles-dir",
+        ".",
+        "--no-use-colors"
+      ],
+      "duration_ms": 4920,
+      "exit_code": 0,
+      "expected_exit": "zero",
+      "output_digest": "4e916be6b0c31498f612639b98edb18891d0ae2ae15d0d2dc319da62122dda1d",
+      "output_tail": "14:49:10  Running with dbt=1.11.12\n14:49:10  Registered adapter: duckdb=1.10.1\n14:49:12  [WARNING]: Constraint types are not supported for view materializations and will\nbe ignored.  Set 'warn_unsupported: false' on this constraint to ignore this\nwarning.\n14:49:12  Found 2 models, 21 data tests, 1 seed, 1 exposure, 485 macros\n14:49:12  \n14:49:12  Concurrency: 1 threads (target='local')\n14:49:12",
+      "project": "proposed",
+      "run_results_digest": null
+    }
+  ],
+  "evidence_digest": "0964a00fa6da775b73933af0c01385130c02ddb97eb5ff176449cb3f713295cb",
+  "schema_version": "1.0"
+}

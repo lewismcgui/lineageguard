@@ -1,0 +1,40 @@
+name: acme_commerce
+version: 1.0.0
+config-version: 2
+
+profile: acme_commerce
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+analysis-paths: ["analyses"]
+snapshot-paths: ["snapshots"]
+
+# Every local database, manifest, compiled query, and log stays in this ignored
+# directory. The demo has no dbt package or network dependency.
+target-path: target
+packages-install-path: target/dbt_packages
+clean-targets: ["target"]
+
+flags:
+  send_anonymous_usage_stats: false
+  use_colors: false
+  partial_parse: false
+  version_check: false
+  write_json: true
+
+models:
+  acme_commerce:
+    +tags: ["lineageguard_demo"]
+    staging:
+      +materialized: view
+      +schema: staging
+    marts:
+      +materialized: table
+      +schema: marts
+
+seeds:
+  acme_commerce:
+    +schema: raw
+    +quote_columns: false

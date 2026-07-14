@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LineageGuard lg-3d10638807e88502</title>
+  <style>
+    :root { color-scheme: dark; --ink:#101416; --paper:#f1eadb; --risk:#ff6b35;
+      --verified:#2ed3c6; --muted:#9da7a6; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--ink); color:var(--paper);
+      font:15px/1.55 "IBM Plex Mono","Aptos Mono",ui-monospace,monospace; }
+    main { width:min(1120px,calc(100% - 32px)); margin:32px auto 64px; }
+    header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end;
+      border-block:1px solid #4b5352; padding:24px 0; }
+    .kicker { color:var(--muted); text-transform:uppercase; font-size:12px; }
+    h1 { margin:4px 0 0; font:700 clamp(28px,5vw,58px)/.95 Georgia,serif; }
+    .decision { border:1px solid var(--risk); padding:10px 14px; color:var(--risk); }
+    .rail { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+      margin:28px 0; }
+    .score { border-top:6px solid var(--risk); padding-top:10px; font-size:24px; }
+    .score.after { border-color:var(--verified); text-align:right; }
+    .arrow { color:var(--muted); }
+    pre { white-space:pre-wrap; overflow-wrap:anywhere; background:#171c1e;
+      border:1px solid #343b3d;
+      padding:20px; border-radius:2px; }
+    @media (max-width:680px) { header { grid-template-columns:1fr; }
+      .rail { grid-template-columns:1fr; }
+      .arrow { transform:rotate(90deg); text-align:center; }
+      .score.after { text-align:left; } }
+  </style>
+</head>
+<body><main>
+  <header><div><div class="kicker">Evidence-led change passport</div>
+    <h1>LineageGuard</h1></div><div class="decision">PASS_WITH_REMEDIATION</div></header>
+  <section class="rail" aria-label="Risk before and after remediation">
+    <div class="score">BEFORE&nbsp; 88/100</div><div class="arrow">-&gt;</div>
+    <div class="score after">AFTER&nbsp; 12/100</div>
+  </section>
+  <pre># LineageGuard change passport lg-3d10638807e88502
+
+**Run status:** `COMPLETE`  
+**Decision:** `PASS_WITH_REMEDIATION`  
+**Initial risk:** 88/100 (`BLOCK`)  
+**Residual risk:** 12  
+**Remediation:** `TESTED`  
+**DataHub writeback:** `VERIFIED`  
+**Source commit:** `746cab4f54a505130cf63ce42df144e18a1bdab0`  
+**Analyzed inputs:** `GENERATED_IN_PROCESS`  
+**Decision evidence hash:** `3d10638807e88502181f687002ffbc79c3014a1b262a1e9bf716ad6229870e5f`
+**Final artifact hash:** `6dabb578cd762433645d58ebf904c66f81a9625f246ddfe044783bed0ebb203b`
+
+## Proposed schema change
+
+| Relation | Change | Existing | Proposed |
+| --- | --- | --- | --- |
+| &amp;quot;acme\_commerce&amp;quot;.&amp;quot;analytics\_staging&amp;quot;.&amp;quot;stg\_orders&amp;quot; | rename\_column | order\_total | gross\_amount |
+
+## DataHub blast radius
+
+| Asset | Type | Hops | Owners | Assertions |
+| --- | --- | ---: | --- | ---: |
+| fct\_daily\_revenue | dataset | 1 | urn:li:corpGroup:finance\_analytics | 1 |
+
+## Tested remediation
+
+Compatibility bridge passed the isolated dbt seed, parse, and build plan.
+
+Verification status: `TESTED`
+
+| Command | Exit | Duration | Output digest |
+| --- | ---: | ---: | --- |
+| dbt seed --project-dir . --profiles-dir . --no-use-colors | 0 | 2777 ms | 6d54d1fe9d91e32f5750e12a4c36b2e3077511ba090521e1ecbeeb639c0f7424 |
+| dbt parse --project-dir . --profiles-dir . --no-use-colors | 0 | 2380 ms | bc09218da36645292c25c1c7d7a960e5cd63aa9fb4dbe42d12b0a05ae89760cc |
+| dbt build --project-dir . --profiles-dir . --select stg\_orders+ --no-use-colors | 0 | 3047 ms | 5facd35445a363f6f49afbc43c1412f9f1bd30292600ce7415fcb45061215b63 |
+
+```diff
+--- a/models/staging/schema.yml
++++ b/models/staging/schema.yml
+@@ -1,54 +1,70 @@
+ version: 2
+-
+ models:
+-  - name: stg_orders
+-    description: Typed order events forming the stable commerce analytics contract.
++- name: stg_orders
++  description: Typed order events forming the stable commerce analytics contract.
++  config:
++    contract:
++      enforced: true
++    meta:
++      data_owner: commerce_analytics
++      domain: commerce
++      contract_tier: critical
++  columns:
++  - name: order_id
++    data_type: bigint
++    description: Stable synthetic order identifier.
++    data_tests:
++    - not_null
++    - unique
++  - name: customer_id
++    data_type: varchar
++    description: Stable synthetic customer identifier.
++    data_tests:
++    - not_null
++  - name: order_date
++    data_type: date
++    description: UTC calendar date on which the order was placed.
++    data_tests:
++    - not_null
++  - name: status
++    data_type: varchar
++    description: Current order lifecycle state.
++    data_tests:
++    - accepted_values:
++        arguments:
++          values:
++          - completed
++          - pending
++          - cancelled
++          - refunded
++  - name: order_total
++    description: Deprecated compatibility alias. Use `gross_amount` instead.
++    meta:
++      lineageguard:
++        deprecated: true
++        replacement: gross_amount
++        change_id: change-03dc073d2b881401
++    data_type: decimal(12, 2)
++    constraints:
++    - type: not_null
++    data_tests:
++    - not_null
++  - name: currency
++    data_type: varchar
++    description: ISO 4217 settlement currency.
++    data_tests:
++    - accepted_values:
++        arguments:
++          values:
++          - GBP
++  - name: gross_amount
++    data_type: decimal(12, 2)
++    description: Proposed replacement for the contracted order_total column.
++    constraints:
++    - type: not_null
+     config:
+-      contract:
+-        enforced: true
+       meta:
+-        data_owner: commerce_analytics
+-        domain: commerce
+-        contract_tier: critical
+-    columns:
+-      - name: order_id
+-        data_type: bigint
+-        description: Stable synthetic order identifier.
+-        data_tests:
+-          - not_null
+-          - unique
+-      - name: customer_id
+-        data_type: varchar
+-        description: Stable synthetic customer identifier.
+-        data_tests:
+-          - not_null
+-      - name: order_date
+-        data_type: date
+-        description: UTC calendar date on which the order was placed.
+-        data_tests:
+-          - not_null
+-      - name: status
+-        data_type: varchar
+-        description: Current order lifecycle state.
+-        data_tests:
+-          - accepted_values:
+-              arguments:
+-                values: [&quot;completed&quot;, &quot;pending&quot;, &quot;cancelled&quot;, &quot;refunded&quot;]
+-      - name: gross_amount
+-        data_type: decimal(12, 2)
+-        description: Proposed replacement for the contracted order_total column.
+-        constraints:
+-          - type: not_null
+-        config:
+-          meta:
+-            semantic_type: monetary_amount
+-            classification: internal
+-        data_tests:
+-          - not_null
+-      - name: currency
+-        data_type: varchar
+-        description: ISO 4217 settlement currency.
+-        data_tests:
+-          - accepted_values:
+-              arguments:
+-                values: [&quot;GBP&quot;]
++        semantic_type: monetary_amount
++        classification: internal
++    data_tests:
++    - not_null
+--- a/models/staging/stg_orders.sql
++++ b/models/staging/stg_orders.sql
+@@ -1,10 +1,10 @@
+--- Proposed PR: rename the contracted column without migrating its consumers.
+--- LineageGuard should identify the broken contract before generating a bridge.
+-select
+-    cast(order_id as bigint) as order_id,
+-    cast(customer_id as varchar) as customer_id,
+-    cast(order_date as date) as order_date,
+-    cast(status as varchar) as status,
+-    cast(order_total as decimal(12, 2)) as gross_amount,
+-    cast(currency as varchar) as currency
+-from {{ ref(&#x27;orders&#x27;) }}
++/* Proposed PR: rename the contracted column without migrating its consumers. */ /* LineageGuard should identify the broken contract before generating a bridge. */
++SELECT
++  CAST(order_id AS BIGINT) AS order_id,
++  CAST(customer_id AS TEXT) AS customer_id,
++  CAST(order_date AS DATE) AS order_date,
++  CAST(status AS TEXT) AS status,
++  CAST(order_total AS DECIMAL(12, 2)) AS order_total,
++  CAST(currency AS TEXT) AS currency,
++  CAST(order_total AS DECIMAL(12, 2)) AS gross_amount
++FROM {{ ref(&#x27;orders&#x27;) }}
+--- /dev/null
++++ b/tests/lineageguard_order_total_matches_gross_amount.sql
+@@ -0,0 +1,11 @@
++-- Generated by LineageGuard; no code was executed during generation.
++-- Change: change-03dc073d2b881401
++with compatibility_check as (
++    select
++        order_total,
++        gross_amount
++    from {{ ref(&#x27;stg_orders&#x27;) }}
++)
++select *
++from compatibility_check
++where order_total is distinct from gross_amount
+```
+
+## Counterfactual decision
+
+Original interface preserved: `true`  
+Counterfactual verified: `true`  
+Residual decision: `PASS`
+
+## Evidence coverage
+
+- Catalog: `complete`
+- Lineage: `complete`
+- Traversal: `complete`
+- Ownership: `complete`
+- Assertions: `complete`
+
+## DataHub durability
+
+The change passport was written through the official MCP server and read back from DataHub.
+
+Document URN: urn:li:document:shared-99a4a464-6f14-4b3c-8794-adb3f60b212e
+</pre>
+</main></body></html>

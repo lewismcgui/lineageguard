@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#171b1e">
+    <meta
+      name="description"
+      content="Local evidence review for one recorded LineageGuard schema-change run."
+    >
+    <title>LineageGuard · Schema change review</title>
+    <link rel="stylesheet" href="/assets/review.css">
+    <script src="/assets/review.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to decision</a>
+
+    <header class="control-bar">
+      <div class="product-lockup" aria-label="LineageGuard schema change review">
+        <span class="product-code" aria-hidden="true">LG</span>
+        <span class="product-name">LineageGuard</span>
+        <span class="product-mode">Review</span>
+      </div>
+      <div class="control-context">
+        <span class="local-indicator"><span aria-hidden="true"></span>Local</span>
+        <span id="header-run" class="header-run">Reading latest run…</span>
+        <button id="reload-run" class="reload-button" type="button">Reload</button>
+      </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+      <section id="system-state" class="system-state" aria-live="polite" aria-busy="true">
+        <p class="state-index">Latest run</p>
+        <h1 id="state-title">Loading the local run record</h1>
+        <p id="state-message">
+          Reading <code>.lineageguard/runs/latest.json</code> without changing it.
+        </p>
+        <div class="loading-rule" aria-hidden="true"><span></span></div>
+      </section>
+
+      <div id="review" class="review-shell" hidden>
+        <section class="outcome-overview" aria-labelledby="outcome-title">
+          <header class="outcome-header">
+            <div class="outcome-heading">
+              <div id="decision-stamp" class="outcome-verdict is-unknown">
+                <span class="verdict-dot" aria-hidden="true"></span>
+                <strong id="final-decision">NO RESULT</strong>
+                <small id="decision-note" class="visually-hidden">Evidence state unavailable</small>
+              </div>
+              <div>
+                <h1 id="outcome-title" aria-live="polite">No completed check</h1>
+                <p id="outcome-summary" class="outcome-summary">
+                  No result is available for this run.
+                </p>
+              </div>
+            </div>
+            <p class="review-meta">
+              <span id="run-timestamp">Time not recorded</span>
+              <span aria-hidden="true">·</span>
+              Local run
+            </p>
+          </header>
+
+          <section class="decision-fork-shell" aria-labelledby="decision-fork-title">
+            <header class="fork-heading">
+              <div>
+                <p>Decision fork</p>
+                <h2 id="decision-fork-title">Follow the change with and without the patch</h2>
+              </div>
+              <p id="fork-summary">Select a point to inspect its evidence.</p>
+            </header>
+
+            <div class="decision-fork" aria-label="Schema change decision path">
+              <div id="mobile-fork-compare" class="mobile-fork-compare" aria-label="Risk comparison">
+                <div>
+                  <span>Without patch</span>
+                  <strong id="mobile-current-result">Not recorded</strong>
+                </div>
+                <span aria-hidden="true">versus</span>
+                <div>
+                  <span id="mobile-projected-label">Patch projection</span>
+                  <strong id="mobile-projected-result">Not recorded</strong>
+                </div>
+              </div>
+              <div id="fork-trunk" class="fork-trunk" aria-label="Recorded change and impact"></div>
+              <div class="fork-split" aria-hidden="true"><span></span></div>
+              <div class="fork-outcomes">
+                <section class="fork-branch blocked-branch" aria-labelledby="blocked-branch-title">
+                  <h3 id="blocked-branch-title">Without patch</h3>
+                  <div id="fork-blocked" class="branch-nodes"></div>
+                </section>
+                <section class="fork-branch patched-branch" aria-labelledby="patched-branch-title">
+                  <h3 id="patched-branch-title">With tested patch</h3>
+                  <div id="fork-patched" class="branch-nodes"></div>
+                </section>
+              </div>
+            </div>
+
+            <section id="map-detail" class="map-detail" aria-live="polite" aria-labelledby="map-detail-title">
+              <div class="map-detail-index">
+                <span id="map-detail-count">1 / 7</span>
+                <strong id="map-detail-label">Change</strong>
+              </div>
+              <div class="map-detail-copy">
+                <h3 id="map-detail-title">Change evidence not loaded</h3>
+                <p id="map-detail-text">Select a point in the decision fork.</p>
+              </div>
+              <a id="map-detail-link" href="#lineage" data-evidence-target>Open evidence</a>
+            </section>
+          </section>
+        </section>
+
+        <details id="technical-evidence" class="technical-evidence">
+          <summary>
+            <span class="evidence-toggle-copy">
+              <strong>View full evidence</strong>
+              <span>Risk inputs, patch diff, command output and readback digests</span>
+            </span>
+            <span class="evidence-toggle-marker" aria-hidden="true">⌄</span>
+          </summary>
+
+          <div class="technical-evidence-body">
+            <dl class="run-register" aria-label="Run register">
+              <div>
+                <dt>Run</dt>
+                <dd id="run-id">Not recorded</dd>
+              </div>
+              <div>
+                <dt>Source commit</dt>
+                <dd id="commit-sha">Not recorded</dd>
+              </div>
+              <div>
+                <dt>Analyzed inputs</dt>
+                <dd id="analyzed-input-state">Not recorded</dd>
+              </div>
+              <div>
+                <dt>Policy</dt>
+                <dd id="policy-version">Not recorded</dd>
+              </div>
+              <div>
+                <dt>Recorded decision</dt>
+                <dd id="raw-decision">Not recorded</dd>
+              </div>
+              <div>
+                <dt>Artifact hash</dt>
+                <dd id="artifact-hash">Not recorded</dd>
+              </div>
+            </dl>
+
+            <nav class="section-index" aria-label="Technical evidence sections">
+              <a href="#trajectory">Risk score</a>
+              <a href="#lineage">Affected assets</a>
+              <a href="#remediation">Patch</a>
+              <a href="#verification">Test results</a>
+              <a href="#passport">DataHub</a>
+            </nav>
+
+        <section id="trajectory" class="ruled-section trajectory-section" aria-labelledby="trajectory-title">
+          <header class="section-heading">
+            <div>
+              <h2 id="trajectory-title">Risk score</h2>
+              <p>Recorded policy score before and after the patch.</p>
+            </div>
+          </header>
+
+          <div class="trajectory-grid">
+            <div class="risk-instrument">
+              <div class="risk-readouts">
+                <div>
+                  <span class="readout-label">Initial risk</span>
+                  <strong id="initial-score">—</strong>
+                  <small id="initial-decision">Not recorded</small>
+                </div>
+                <div class="residual-readout">
+                  <span class="readout-label">Residual risk</span>
+                  <strong id="residual-score">—</strong>
+                  <small id="residual-decision">Not recorded</small>
+                </div>
+              </div>
+
+              <div
+                id="risk-rail"
+                class="risk-rail"
+                role="img"
+                aria-label="Initial and residual risk were not recorded"
+              >
+                <div class="risk-zones" aria-hidden="true">
+                  <span class="zone-pass">PASS 0–24</span>
+                  <span class="zone-review">REVIEW 25–59</span>
+                  <span class="zone-block">BLOCK 60–100</span>
+                </div>
+                <input
+                  id="initial-marker"
+                  class="risk-marker initial-marker"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="0"
+                  tabindex="-1"
+                  aria-hidden="true"
+                  disabled
+                >
+                <input
+                  id="residual-marker"
+                  class="risk-marker residual-marker"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="0"
+                  tabindex="-1"
+                  aria-hidden="true"
+                  disabled
+                >
+              </div>
+
+              <ol id="stage-track" class="stage-track" aria-label="Run stages"></ol>
+            </div>
+
+            <aside class="passport-seal" aria-labelledby="seal-title">
+              <h3 id="seal-title">Verification record</h3>
+              <strong id="seal-status">NOT RECORDED</strong>
+              <dl>
+                <div>
+                  <dt>Evidence hash</dt>
+                  <dd id="passport-signature">Not recorded</dd>
+                </div>
+                <div>
+                  <dt>Writeback</dt>
+                  <dd id="seal-writeback">Not recorded</dd>
+                </div>
+                <div>
+                  <dt>Readback</dt>
+                  <dd id="seal-readback">Not recorded</dd>
+                </div>
+              </dl>
+            </aside>
+          </div>
+        </section>
+
+            <div class="review-columns">
+          <div class="primary-ledger">
+            <section id="lineage" class="ruled-section" aria-labelledby="lineage-title">
+              <header class="section-heading">
+                <div>
+                  <h2 id="lineage-title">Affected assets</h2>
+                  <p id="lineage-summary">No impacted asset records loaded.</p>
+                </div>
+              </header>
+
+              <div class="change-register">
+                <h3>Schema change</h3>
+                <div class="table-scroll" tabindex="0" aria-label="Scrollable schema change table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th scope="col">Change</th>
+                        <th scope="col">Relation</th>
+                        <th scope="col">Before</th>
+                        <th scope="col">After</th>
+                        <th scope="col">Confidence</th>
+                      </tr>
+                    </thead>
+                    <tbody id="change-rows"></tbody>
+                  </table>
+                </div>
+                <p id="change-empty" class="inline-empty" hidden>
+                  No normalized schema-change records were included in this artifact.
+                </p>
+              </div>
+
+              <ol id="lineage-list" class="lineage-ledger" aria-label="Impacted lineage assets"></ol>
+              <p id="lineage-empty" class="inline-empty" hidden>
+                No impacted asset records were included in this artifact. This does not prove zero impact.
+              </p>
+            </section>
+
+            <section id="remediation" class="ruled-section" aria-labelledby="remediation-title">
+              <header class="section-heading">
+                <div>
+                  <h2 id="remediation-title">Compatibility patch</h2>
+                  <p id="remediation-summary">No remediation status loaded.</p>
+                </div>
+              </header>
+              <div id="artifact-tabs" class="artifact-tabs" role="tablist" aria-label="Remediation artifacts"></div>
+              <div id="diff-panel" class="diff-panel" role="tabpanel" tabindex="0" aria-live="polite">
+                <p id="diff-empty" class="inline-empty">
+                  No remediation artifact was recorded for this run.
+                </p>
+                <pre id="diff-view" hidden aria-label="Generated remediation diff"></pre>
+              </div>
+            </section>
+
+            <section id="verification" class="ruled-section" aria-labelledby="verification-title">
+              <header class="section-heading">
+                <div>
+                  <h2 id="verification-title">Recorded dbt checks</h2>
+                  <p id="verification-summary">No verification result loaded.</p>
+                </div>
+              </header>
+              <ol id="command-list" class="command-ledger" aria-label="Verification commands"></ol>
+              <p id="command-empty" class="inline-empty" hidden>
+                No dbt command evidence was included in this artifact.
+              </p>
+            </section>
+          </div>
+
+          <aside class="secondary-ledger" aria-label="Decision evidence">
+            <section class="side-section" aria-labelledby="risk-ledger-title">
+              <header>
+                <p>Initial risk</p>
+                <h2 id="risk-ledger-title">Score breakdown</h2>
+              </header>
+              <ol id="contribution-list" class="contribution-list"></ol>
+              <p id="contribution-empty" class="inline-empty" hidden>
+                No risk contribution breakdown was recorded.
+              </p>
+            </section>
+
+            <section class="side-section" aria-labelledby="counterfactual-title">
+              <header>
+                <p>Residual risk</p>
+                <h2 id="counterfactual-title">After the patch</h2>
+              </header>
+              <dl id="residual-facts" class="fact-list"></dl>
+            </section>
+
+            <section id="passport" class="side-section passport-section" aria-labelledby="passport-title">
+              <header>
+                <p>DataHub verification</p>
+                <h2 id="passport-title">Writeback and readback</h2>
+              </header>
+              <ol id="writeback-timeline" class="writeback-timeline"></ol>
+              <dl id="passport-facts" class="fact-list"></dl>
+            </section>
+          </aside>
+            </div>
+          </div>
+        </details>
+
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: Typed order events forming the stable commerce analytics contract.
+    config:
+      contract:
+        enforced: true
+      meta:
+        data_owner: commerce_analytics
+        domain: commerce
+        contract_tier: critical
+    columns:
+      - name: order_id
+        data_type: bigint
+        description: Stable synthetic order identifier.
+        data_tests:
+          - not_null
+          - unique
+      - name: customer_id
+        data_type: varchar
+        description: Stable synthetic customer identifier.
+        data_tests:
+          - not_null
+      - name: order_date
+        data_type: date
+        description: UTC calendar date on which the order was placed.
+        data_tests:
+          - not_null
+      - name: status
+        data_type: varchar
+        description: Current order lifecycle state.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["completed", "pending", "cancelled", "refunded"]
+      - name: order_total
+        data_type: decimal(12, 2)
+        description: Contracted order value consumed by revenue models.
+        constraints:
+          - type: not_null
+        config:
+          meta:
+            semantic_type: monetary_amount
+            classification: internal
+        data_tests:
+          - not_null
+      - name: currency
+        data_type: varchar
+        description: ISO 4217 settlement currency.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["GBP"]

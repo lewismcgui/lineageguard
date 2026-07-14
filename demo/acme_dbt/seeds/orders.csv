@@ -1,0 +1,11 @@
+order_id,customer_id,order_date,status,order_total,currency
+1001,CUST-001,2026-06-29,completed,129.90,GBP
+1002,CUST-002,2026-06-29,refunded,49.50,GBP
+1003,CUST-003,2026-06-29,completed,75.00,GBP
+1004,CUST-001,2026-06-30,completed,220.00,GBP
+1005,CUST-004,2026-06-30,pending,89.99,GBP
+1006,CUST-005,2026-07-01,completed,42.50,GBP
+1007,CUST-006,2026-07-01,cancelled,315.00,GBP
+1008,CUST-002,2026-07-01,completed,88.00,GBP
+1009,CUST-007,2026-07-02,completed,160.25,GBP
+1010,CUST-003,2026-07-02,completed,39.75,GBP

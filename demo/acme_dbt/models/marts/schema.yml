@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: fct_daily_revenue
+    description: Daily completed-order revenue used by the synthetic finance dashboard.
+    config:
+      contract:
+        enforced: true
+      meta:
+        data_owner: finance_analytics
+        domain: finance
+        dashboard_consumer: executive_revenue_overview
+        freshness_sla_hours: 24
+    columns:
+      - name: order_date
+        data_type: date
+        description: UTC revenue reporting date.
+        data_tests:
+          - not_null
+          - unique
+      - name: currency
+        data_type: varchar
+        description: ISO 4217 settlement currency.
+        data_tests:
+          - not_null
+      - name: order_count
+        data_type: bigint
+        description: Number of completed orders on the reporting date.
+        data_tests:
+          - not_null
+      - name: gross_revenue
+        data_type: decimal(14, 2)
+        description: Sum of contracted order_total values for completed orders.
+        data_tests:
+          - not_null
+
+exposures:
+  - name: executive_revenue_overview
+    label: Executive Revenue Overview
+    type: dashboard
+    maturity: high
+    description: Synthetic dashboard consuming the contracted daily revenue mart.
+    depends_on:
+      - ref('fct_daily_revenue')
+    owner:
+      name: Finance Analytics
+      email: finance-analytics@example.invalid
+    meta:
+      synthetic_data: true
+      business_criticality: high

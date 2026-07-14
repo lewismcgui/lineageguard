@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "adapter_type": "duckdb"
+  },
+  "nodes": {
+    "model.other_package.ambiguous": {
+      "resource_type": "model",
+      "relation_name": "analytics.ambiguous_orders",
+      "columns": {
+        "gross_amount_a": {
+          "name": "gross_amount_a",
+          "data_type": "decimal(12, 2)"
+        },
+        "gross_amount_b": {
+          "name": "gross_amount_b",
+          "data_type": "decimal(12, 2)"
+        }
+      },
+      "compiled_code": "select order_total as gross_amount_a, order_total as gross_amount_b from raw.orders"
+    }
+  }
+}

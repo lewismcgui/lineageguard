@@ -1,0 +1,46 @@
+version: 2
+
+seeds:
+  - name: orders
+    description: Synthetic checkout orders used only by the LineageGuard demo.
+    config:
+      column_types:
+        order_id: bigint
+        customer_id: varchar
+        order_date: date
+        status: varchar
+        order_total: decimal(12, 2)
+        currency: varchar
+      meta:
+        data_owner: commerce_platform
+        synthetic_data: true
+    columns:
+      - name: order_id
+        description: Stable synthetic order identifier.
+        data_tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: Stable synthetic customer identifier.
+        data_tests:
+          - not_null
+      - name: order_date
+        description: UTC calendar date on which the order was placed.
+        data_tests:
+          - not_null
+      - name: status
+        description: Current synthetic order lifecycle state.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["completed", "pending", "cancelled", "refunded"]
+      - name: order_total
+        description: Order value in the currency identified by currency.
+        data_tests:
+          - not_null
+      - name: currency
+        description: ISO 4217 settlement currency.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["GBP"]

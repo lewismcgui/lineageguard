@@ -1,0 +1,78 @@
+- id: io.lineageguard.runId
+  qualified_name: io.lineageguard.runId
+  type: string
+  cardinality: SINGLE
+  display_name: LineageGuard Run ID
+  entity_types: [dataset]
+  description: Deterministic identifier for the latest LineageGuard schema-change analysis.
+
+- id: io.lineageguard.originalRisk
+  qualified_name: io.lineageguard.originalRisk
+  type: number
+  cardinality: SINGLE
+  display_name: LineageGuard Original Risk
+  entity_types: [dataset]
+  description: Risk score before tested remediation, from 0 to 100.
+
+- id: io.lineageguard.residualRisk
+  qualified_name: io.lineageguard.residualRisk
+  type: number
+  cardinality: SINGLE
+  display_name: LineageGuard Residual Risk
+  entity_types: [dataset]
+  description: Counterfactual risk score after tested remediation, from 0 to 100.
+
+- id: io.lineageguard.decision
+  qualified_name: io.lineageguard.decision
+  type: string
+  cardinality: SINGLE
+  display_name: LineageGuard Decision
+  entity_types: [dataset]
+  description: Final fail-closed PR decision from the latest LineageGuard run.
+  allowed_values:
+    - value: PASS
+    - value: PASS_WITH_REMEDIATION
+    - value: REVIEW
+    - value: BLOCK
+
+- id: io.lineageguard.remediationStatus
+  qualified_name: io.lineageguard.remediationStatus
+  type: string
+  cardinality: SINGLE
+  display_name: LineageGuard Remediation Status
+  entity_types: [dataset]
+  description: Generation and test status of the latest remediation.
+  allowed_values:
+    - value: NOT_NEEDED
+    - value: UNSUPPORTED
+    - value: GENERATED
+    - value: TESTED
+    - value: TEST_FAILED
+    - value: VERIFICATION_ERROR
+
+- id: io.lineageguard.evidenceHash
+  qualified_name: io.lineageguard.evidenceHash
+  type: string
+  cardinality: SINGLE
+  display_name: LineageGuard Evidence Hash
+  entity_types: [dataset]
+  description: SHA-256 digest covering the decision, evidence and remediation test results.
+
+- id: io.lineageguard.commitSha
+  qualified_name: io.lineageguard.commitSha
+  type: string
+  cardinality: SINGLE
+  display_name: LineageGuard Source Commit SHA
+  entity_types: [dataset]
+  description: Clean source-tree revision, or WORKTREE; analyzed manifests are bound separately by hash.
+
+- id: io.lineageguard.writebackState
+  qualified_name: io.lineageguard.writebackState
+  type: string
+  cardinality: SINGLE
+  display_name: LineageGuard Writeback State
+  entity_types: [dataset]
+  description: Two-phase durability state for the latest LineageGuard catalog write.
+  allowed_values:
+    - value: PENDING
+    - value: VERIFIED

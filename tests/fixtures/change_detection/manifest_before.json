@@ -1,0 +1,41 @@
+{
+  "metadata": {
+    "adapter_type": "duckdb",
+    "dbt_schema_version": "https://schemas.getdbt.com/dbt/manifest/v12.json"
+  },
+  "nodes": {
+    "model.lineageguard.orders_v1": {
+      "resource_type": "model",
+      "name": "orders",
+      "relation_name": "\"analytics\".\"orders\"",
+      "columns": {
+        "order_id": {
+          "name": "order_id",
+          "data_type": "bigint",
+          "nullable": false
+        },
+        "order_total": {
+          "name": "order_total",
+          "data_type": "decimal(12, 2)",
+          "nullable": true
+        },
+        "legacy_code": {
+          "name": "legacy_code",
+          "data_type": "varchar",
+          "nullable": true
+        },
+        "customer_note": {
+          "name": "customer_note",
+          "data_type": "varchar",
+          "nullable": true
+        },
+        "status": {
+          "name": "status",
+          "data_type": "varchar(20)",
+          "nullable": true
+        }
+      },
+      "compiled_code": "select order_id, order_total, legacy_code, customer_note, status from raw.orders"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "metadata": {
+    "adapter_type": "duckdb",
+    "dbt_schema_version": "https://schemas.getdbt.com/dbt/manifest/v12.json"
+  },
+  "nodes": {
+    "model.renamed_package.completely_different_unique_id": {
+      "resource_type": "model",
+      "name": "orders",
+      "relation_name": "\"analytics\".\"orders\"",
+      "columns": {
+        "order_id": {
+          "name": "order_id",
+          "data_type": "bigint",
+          "nullable": false
+        },
+        "gross_amount": {
+          "name": "gross_amount",
+          "data_type": "decimal(18, 2)",
+          "nullable": false
+        },
+        "currency": {
+          "name": "currency",
+          "data_type": "varchar(3)",
+          "nullable": false
+        },
+        "customer_note": {
+          "name": "customer_note",
+          "data_type": "bigint",
+          "nullable": true
+        },
+        "status": {
+          "name": "status",
+          "data_type": "varchar(20)",
+          "nullable": false
+        }
+      },
+      "compiled_code": "select order_id, order_total as gross_amount, currency, customer_note, status from raw.orders"
+    }
+  }
+}

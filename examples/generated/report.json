@@ -1,0 +1,739 @@
+{
+  "artifact_hash": "6dabb578cd762433645d58ebf904c66f81a9625f246ddfe044783bed0ebb203b",
+  "changes": [
+    {
+      "change_type": "rename_column",
+      "confidence": "high",
+      "evidence": [],
+      "evidence_refs": [
+        "dbt:column-set:removed-and-added",
+        "dbt:compiled-expression:09c3bf66b9a72b47"
+      ],
+      "id": "change-03dc073d2b881401",
+      "new_column": "gross_amount",
+      "new_nullable": false,
+      "new_type": "DECIMAL(12, 2)",
+      "old_column": "order_total",
+      "old_nullable": false,
+      "old_type": "DECIMAL(12, 2)",
+      "relation": "\"acme_commerce\".\"analytics_staging\".\"stg_orders\"",
+      "source_path": "proposed-manifest.json"
+    }
+  ],
+  "context": {
+    "evidence_state": {
+      "assertions": "complete",
+      "catalog": "complete",
+      "lineage": "complete",
+      "ownership": "complete",
+      "records": [
+        {
+          "critical": true,
+          "detail": "dataset=urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_marts.fct_daily_revenue,PROD)",
+          "id": "graphql-assertion:urn:li:assertion:lineageguard.acme.fct_daily_revenue.gross_revenue_not_null",
+          "kind": "assertion",
+          "observed_at": null,
+          "source": "DataHub GraphQL dataset.assertions",
+          "status": "complete"
+        },
+        {
+          "critical": true,
+          "detail": "datasets=2 assertions=1",
+          "id": "graphql-assertions:0a9dfeac21ea07d57d028b69b70f7a6c32472e890eb119ee7539a7afa9799bee:8de36687093fa7baa1ff41bfc8077d531e0c3f64b06a0587bfb8872dbd20cd2c",
+          "kind": "assertion",
+          "observed_at": null,
+          "source": "DataHub GraphQL dataset.assertions",
+          "status": "complete"
+        },
+        {
+          "critical": true,
+          "detail": "enriched=1 expected=1",
+          "id": "mcp-entities:7f14c4c1d0f267589d59c3ec5750bc3e14d1e47c5589c35e19e8eec835977d1e",
+          "kind": "ownership",
+          "observed_at": null,
+          "source": "DataHub MCP get_entities",
+          "status": "complete"
+        },
+        {
+          "critical": true,
+          "detail": "source=urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_staging.stg_orders,PROD) column=order_total assets=1",
+          "id": "mcp-lineage:8a019f756b0b857c4c17fac78e560f2a4af316971afabbe297eb34d4fc5a2be3",
+          "kind": "lineage",
+          "observed_at": null,
+          "source": "DataHub MCP get_lineage",
+          "status": "complete"
+        },
+        {
+          "critical": true,
+          "detail": "dataset=urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_staging.stg_orders,PROD) column=order_total",
+          "id": "mcp-schema:b5418aef874cffbfb5310ca0b55f604238eb1a604690aa212b8ddfced3a9ff74",
+          "kind": "catalog",
+          "observed_at": null,
+          "source": "DataHub MCP list_schema_fields",
+          "status": "complete"
+        },
+        {
+          "critical": true,
+          "detail": null,
+          "id": "mcp-traversal:8a019f756b0b857c4c17fac78e560f2a4af316971afabbe297eb34d4fc5a2be3",
+          "kind": "traversal",
+          "observed_at": null,
+          "source": "DataHub MCP get_lineage pagination",
+          "status": "complete"
+        }
+      ],
+      "traversal": "complete"
+    },
+    "impacted_assets": [
+      {
+        "assertion_urns": [
+          "urn:li:assertion:lineageguard.acme.fct_daily_revenue.gross_revenue_not_null"
+        ],
+        "asset_type": "dataset",
+        "critical_asset": true,
+        "direct_column_lineage": true,
+        "evidence": [],
+        "evidence_refs": [
+          "graphql-assertions:0a9dfeac21ea07d57d028b69b70f7a6c32472e890eb119ee7539a7afa9799bee",
+          "mcp-entities:7f14c4c1d0f267589d59c3ec5750bc3e14d1e47c5589c35e19e8eec835977d1e",
+          "mcp-lineage:8a019f756b0b857c4c17fac78e560f2a4af316971afabbe297eb34d4fc5a2be3"
+        ],
+        "hop_count": 1,
+        "name": "fct_daily_revenue",
+        "owners": [
+          "urn:li:corpGroup:finance_analytics"
+        ],
+        "recent_query_usage_score": null,
+        "sensitive_data": false,
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_marts.fct_daily_revenue,PROD)"
+      }
+    ],
+    "reason_codes": [],
+    "response_digests": [
+      "0a9dfeac21ea07d57d028b69b70f7a6c32472e890eb119ee7539a7afa9799bee",
+      "7f14c4c1d0f267589d59c3ec5750bc3e14d1e47c5589c35e19e8eec835977d1e",
+      "8a019f756b0b857c4c17fac78e560f2a4af316971afabbe297eb34d4fc5a2be3",
+      "8de36687093fa7baa1ff41bfc8077d531e0c3f64b06a0587bfb8872dbd20cd2c",
+      "b5418aef874cffbfb5310ca0b55f604238eb1a604690aa212b8ddfced3a9ff74",
+      "d12b930d917fe285d64b4550b85379da1bafc6a654723b9702945cbb9199c356"
+    ],
+    "source_urns": [
+      "urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_staging.stg_orders,PROD)"
+    ]
+  },
+  "created_at": "2026-07-14T14:49:28.468267Z",
+  "evidence_hash": "3d10638807e88502181f687002ffbc79c3014a1b262a1e9bf716ad6229870e5f",
+  "final_decision": "PASS_WITH_REMEDIATION",
+  "initial_risk": {
+    "asset_risks": [
+      {
+        "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_marts.fct_daily_revenue,PROD)",
+        "contributions": [
+          {
+            "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_marts.fct_daily_revenue,PROD)",
+            "category": "severity",
+            "change_id": "change-03dc073d2b881401",
+            "evidence_refs": [
+              "dbt:column-set:removed-and-added",
+              "dbt:compiled-expression:09c3bf66b9a72b47"
+            ],
+            "explanation": "Worst applicable schema change: rename_column.",
+            "key": "rename_column",
+            "points": 35
+          },
+          {
+            "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_marts.fct_daily_revenue,PROD)",
+            "category": "signal",
+            "change_id": null,
+            "evidence_refs": [
+              "graphql-assertions:0a9dfeac21ea07d57d028b69b70f7a6c32472e890eb119ee7539a7afa9799bee",
+              "mcp-entities:7f14c4c1d0f267589d59c3ec5750bc3e14d1e47c5589c35e19e8eec835977d1e",
+              "mcp-lineage:8a019f756b0b857c4c17fac78e560f2a4af316971afabbe297eb34d4fc5a2be3"
+            ],
+            "explanation": "Asset has an assertion or contract dependency.",
+            "key": "assertion_contract",
+            "points": 25
+          },
+          {
+            "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_marts.fct_daily_revenue,PROD)",
+            "category": "signal",
+            "change_id": null,
+            "evidence_refs": [
+              "graphql-assertions:0a9dfeac21ea07d57d028b69b70f7a6c32472e890eb119ee7539a7afa9799bee",
+              "mcp-entities:7f14c4c1d0f267589d59c3ec5750bc3e14d1e47c5589c35e19e8eec835977d1e",
+              "mcp-lineage:8a019f756b0b857c4c17fac78e560f2a4af316971afabbe297eb34d4fc5a2be3"
+            ],
+            "explanation": "Asset is explicitly marked critical.",
+            "key": "critical_asset",
+            "points": 15
+          },
+          {
+            "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_marts.fct_daily_revenue,PROD)",
+            "category": "signal",
+            "change_id": null,
+            "evidence_refs": [
+              "graphql-assertions:0a9dfeac21ea07d57d028b69b70f7a6c32472e890eb119ee7539a7afa9799bee",
+              "mcp-entities:7f14c4c1d0f267589d59c3ec5750bc3e14d1e47c5589c35e19e8eec835977d1e",
+              "mcp-lineage:8a019f756b0b857c4c17fac78e560f2a4af316971afabbe297eb34d4fc5a2be3"
+            ],
+            "explanation": "Direct column-level lineage connects the change to this asset.",
+            "key": "direct_column_lineage",
+            "points": 10
+          }
+        ],
+        "hop_count": 1,
+        "score": 85
+      }
+    ],
+    "change_ids": [
+      "change-03dc073d2b881401"
+    ],
+    "contributions": [
+      {
+        "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_marts.fct_daily_revenue,PROD)",
+        "category": "severity",
+        "change_id": "change-03dc073d2b881401",
+        "evidence_refs": [
+          "dbt:column-set:removed-and-added",
+          "dbt:compiled-expression:09c3bf66b9a72b47"
+        ],
+        "explanation": "Worst applicable schema change: rename_column.",
+        "key": "rename_column",
+        "points": 35
+      },
+      {
+        "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_marts.fct_daily_revenue,PROD)",
+        "category": "signal",
+        "change_id": null,
+        "evidence_refs": [
+          "graphql-assertions:0a9dfeac21ea07d57d028b69b70f7a6c32472e890eb119ee7539a7afa9799bee",
+          "mcp-entities:7f14c4c1d0f267589d59c3ec5750bc3e14d1e47c5589c35e19e8eec835977d1e",
+          "mcp-lineage:8a019f756b0b857c4c17fac78e560f2a4af316971afabbe297eb34d4fc5a2be3"
+        ],
+        "explanation": "Asset has an assertion or contract dependency.",
+        "key": "assertion_contract",
+        "points": 25
+      },
+      {
+        "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_marts.fct_daily_revenue,PROD)",
+        "category": "signal",
+        "change_id": null,
+        "evidence_refs": [
+          "graphql-assertions:0a9dfeac21ea07d57d028b69b70f7a6c32472e890eb119ee7539a7afa9799bee",
+          "mcp-entities:7f14c4c1d0f267589d59c3ec5750bc3e14d1e47c5589c35e19e8eec835977d1e",
+          "mcp-lineage:8a019f756b0b857c4c17fac78e560f2a4af316971afabbe297eb34d4fc5a2be3"
+        ],
+        "explanation": "Asset is explicitly marked critical.",
+        "key": "critical_asset",
+        "points": 15
+      },
+      {
+        "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_marts.fct_daily_revenue,PROD)",
+        "category": "signal",
+        "change_id": null,
+        "evidence_refs": [
+          "graphql-assertions:0a9dfeac21ea07d57d028b69b70f7a6c32472e890eb119ee7539a7afa9799bee",
+          "mcp-entities:7f14c4c1d0f267589d59c3ec5750bc3e14d1e47c5589c35e19e8eec835977d1e",
+          "mcp-lineage:8a019f756b0b857c4c17fac78e560f2a4af316971afabbe297eb34d4fc5a2be3"
+        ],
+        "explanation": "Direct column-level lineage connects the change to this asset.",
+        "key": "direct_column_lineage",
+        "points": 10
+      },
+      {
+        "asset_urn": null,
+        "category": "breadth",
+        "change_id": null,
+        "evidence_refs": [],
+        "explanation": "Breadth bonus: round-half-up(3 * log2(1 + 1)), capped at 15.",
+        "key": "round_half_up_log2_one_plus_assets",
+        "points": 3
+      }
+    ],
+    "decision": "BLOCK",
+    "decision_override": null,
+    "evidence_state": {
+      "assertions": "complete",
+      "catalog": "complete",
+      "lineage": "complete",
+      "ownership": "complete",
+      "records": [
+        {
+          "critical": true,
+          "detail": "dataset=urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_marts.fct_daily_revenue,PROD)",
+          "id": "graphql-assertion:urn:li:assertion:lineageguard.acme.fct_daily_revenue.gross_revenue_not_null",
+          "kind": "assertion",
+          "observed_at": null,
+          "source": "DataHub GraphQL dataset.assertions",
+          "status": "complete"
+        },
+        {
+          "critical": true,
+          "detail": "datasets=2 assertions=1",
+          "id": "graphql-assertions:0a9dfeac21ea07d57d028b69b70f7a6c32472e890eb119ee7539a7afa9799bee:8de36687093fa7baa1ff41bfc8077d531e0c3f64b06a0587bfb8872dbd20cd2c",
+          "kind": "assertion",
+          "observed_at": null,
+          "source": "DataHub GraphQL dataset.assertions",
+          "status": "complete"
+        },
+        {
+          "critical": true,
+          "detail": "enriched=1 expected=1",
+          "id": "mcp-entities:7f14c4c1d0f267589d59c3ec5750bc3e14d1e47c5589c35e19e8eec835977d1e",
+          "kind": "ownership",
+          "observed_at": null,
+          "source": "DataHub MCP get_entities",
+          "status": "complete"
+        },
+        {
+          "critical": true,
+          "detail": "source=urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_staging.stg_orders,PROD) column=order_total assets=1",
+          "id": "mcp-lineage:8a019f756b0b857c4c17fac78e560f2a4af316971afabbe297eb34d4fc5a2be3",
+          "kind": "lineage",
+          "observed_at": null,
+          "source": "DataHub MCP get_lineage",
+          "status": "complete"
+        },
+        {
+          "critical": true,
+          "detail": "dataset=urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_staging.stg_orders,PROD) column=order_total",
+          "id": "mcp-schema:b5418aef874cffbfb5310ca0b55f604238eb1a604690aa212b8ddfced3a9ff74",
+          "kind": "catalog",
+          "observed_at": null,
+          "source": "DataHub MCP list_schema_fields",
+          "status": "complete"
+        },
+        {
+          "critical": true,
+          "detail": null,
+          "id": "mcp-traversal:8a019f756b0b857c4c17fac78e560f2a4af316971afabbe297eb34d4fc5a2be3",
+          "kind": "traversal",
+          "observed_at": null,
+          "source": "DataHub MCP get_lineage pagination",
+          "status": "complete"
+        }
+      ],
+      "traversal": "complete"
+    },
+    "impacted_asset_urns": [
+      "urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_marts.fct_daily_revenue,PROD)"
+    ],
+    "policy_version": "1.0.0",
+    "score": 88,
+    "score_basis_asset_urn": "urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_marts.fct_daily_revenue,PROD)",
+    "score_decision": "BLOCK"
+  },
+  "inputs": {
+    "after_manifest": "proposed-manifest.json",
+    "after_manifest_sha256": "f348aa2bdbb3f8216b52b07bd737589e139a255991e60af93eb0201050f4ac3d",
+    "analyzed_input_state": "GENERATED_IN_PROCESS",
+    "before_manifest": "baseline-manifest.json",
+    "before_manifest_sha256": "f42b7fe7308f0ed5a5298dd15843d2556509ad19efa57c04fa547ab2499ba647",
+    "commit_sha": "746cab4f54a505130cf63ce42df144e18a1bdab0",
+    "dialect": "duckdb",
+    "model_path": "models/staging/stg_orders.sql",
+    "policy_sha256": "596e2578352b1d8741b0350d228b120041e382f170c39a00f3f9a981ccbc4401",
+    "preflight_evidence_digest": "0964a00fa6da775b73933af0c01385130c02ddb97eb5ff176449cb3f713295cb",
+    "project": "proposed",
+    "schema_path": "models/staging/schema.yml",
+    "selector": "stg_orders+",
+    "test_path": "tests/lineageguard_order_total_matches_gross_amount.sql",
+    "writeback_requested": true
+  },
+  "mcp_trace": [
+    {
+      "argument_digest": "0b1287fa9191ec5af2612a11b97a112d248aa0fdad9f740afc8243fa3eb3f9cd",
+      "attempt": 1,
+      "duration_ms": 576,
+      "result_digest": "d12b930d917fe285d64b4550b85379da1bafc6a654723b9702945cbb9199c356",
+      "success": true,
+      "tool": "search"
+    },
+    {
+      "argument_digest": "7e8635a1b307eadc6d8b6811a20e5b6594c5a080120cc9681315ec224a1402cd",
+      "attempt": 1,
+      "duration_ms": 415,
+      "result_digest": "b5418aef874cffbfb5310ca0b55f604238eb1a604690aa212b8ddfced3a9ff74",
+      "success": true,
+      "tool": "list_schema_fields"
+    },
+    {
+      "argument_digest": "8d610ae26b08f8299148a97d11c57eeb0730ffedae10cfa30a09948f5cf5a67c",
+      "attempt": 1,
+      "duration_ms": 439,
+      "result_digest": "8a019f756b0b857c4c17fac78e560f2a4af316971afabbe297eb34d4fc5a2be3",
+      "success": true,
+      "tool": "get_lineage"
+    },
+    {
+      "argument_digest": "19a68a8c980afbeef142c03d6c568328fc35966d3b39172408bdd8698be651fb",
+      "attempt": 1,
+      "duration_ms": 456,
+      "result_digest": "7f14c4c1d0f267589d59c3ec5750bc3e14d1e47c5589c35e19e8eec835977d1e",
+      "success": true,
+      "tool": "get_entities"
+    },
+    {
+      "argument_digest": "0ef74f9efb69f908a5d520eda5b7e38664ad7ea73d01c9ecc76bd820fdff9c27",
+      "attempt": 1,
+      "duration_ms": 570,
+      "result_digest": "85b91498e3a5ec7ceb1c48e1ee9fb214d526cac4f71eed1a470761a82cf4df02",
+      "success": true,
+      "tool": "search_documents"
+    },
+    {
+      "argument_digest": "05d75a50e4532ddd9fd4c054273aa662c31ef08363ff711cf314cb6f1760a9c9",
+      "attempt": 1,
+      "duration_ms": 1935,
+      "result_digest": "4b15d4a404c113e749d47a08ab290f0d48fdf0544ceccae939f186fa06a9f88b",
+      "success": true,
+      "tool": "add_structured_properties"
+    },
+    {
+      "argument_digest": "c621e6006c711a9aeae89349b71c4ad44005eed1346a119e0b7fd1f1fa715a21",
+      "attempt": 1,
+      "duration_ms": 858,
+      "result_digest": "556653a9235c31bf95b83323bb405f7ce84a80012c87e4f3899b95e3f413994b",
+      "success": true,
+      "tool": "save_document"
+    },
+    {
+      "argument_digest": "4d9fe3190128144c0587f5408de269a897d9d9106d867057062ccbef10c1d8e9",
+      "attempt": 1,
+      "duration_ms": 602,
+      "result_digest": "9936f33a818ed0df8e086e1fabdb3753ea41890e2264352b0c1211db7868c306",
+      "success": true,
+      "tool": "get_entities"
+    },
+    {
+      "argument_digest": "4d9fe3190128144c0587f5408de269a897d9d9106d867057062ccbef10c1d8e9",
+      "attempt": 1,
+      "duration_ms": 512,
+      "result_digest": "9b6b16da20d19d254e6a32cd39a3390efba6990a843de3a4b4d60185ca07228d",
+      "success": true,
+      "tool": "get_entities"
+    },
+    {
+      "argument_digest": "0d85e3246a51797c06576ba7bbbcb13659c58adfa1ab7364c082608140365945",
+      "attempt": 1,
+      "duration_ms": 369,
+      "result_digest": "2f8312dedc0c1497680da7548efe26ab38f0531aae058613af03855e7bc854ee",
+      "success": true,
+      "tool": "grep_documents"
+    },
+    {
+      "argument_digest": "8e33dbacf7cb387a85e7a8929715fb88d6c6dc5dff2a5b91a1d8c0302b164970",
+      "attempt": 1,
+      "duration_ms": 501,
+      "result_digest": "94c4904edeb0260d91b4434eac37d75fd48260b69f0a5e6547d8855d8190ac2d",
+      "success": true,
+      "tool": "remove_tags"
+    },
+    {
+      "argument_digest": "a548ea944ea0d3065fa811771c86007843644dd6dad6628365abd12473ed8e63",
+      "attempt": 1,
+      "duration_ms": 442,
+      "result_digest": "dbcdc71eec847751baeb795906b2392d0eb79612fac99bd5bab46f37c1ff81e2",
+      "success": true,
+      "tool": "add_tags"
+    },
+    {
+      "argument_digest": "4d9fe3190128144c0587f5408de269a897d9d9106d867057062ccbef10c1d8e9",
+      "attempt": 1,
+      "duration_ms": 839,
+      "result_digest": "5fc194f275f1a583a2dff634b4aae312fe88cb7dd304291109f57de7018e5db6",
+      "success": true,
+      "tool": "get_entities"
+    },
+    {
+      "argument_digest": "1c66a607648e6702465a71b1241094d1f207e9850cc2e4dda34bd046252f7a3e",
+      "attempt": 1,
+      "duration_ms": 685,
+      "result_digest": "d4c6843d63abba9998bf54287346adf7e640263dd288398d222ab1efd26c42f4",
+      "success": true,
+      "tool": "add_structured_properties"
+    },
+    {
+      "argument_digest": "4d9fe3190128144c0587f5408de269a897d9d9106d867057062ccbef10c1d8e9",
+      "attempt": 1,
+      "duration_ms": 526,
+      "result_digest": "ccc79d5888cd75c46b18d12266df6039e74b6468f8904cce7e17f0cb75af78ee",
+      "success": true,
+      "tool": "get_entities"
+    },
+    {
+      "argument_digest": "0d85e3246a51797c06576ba7bbbcb13659c58adfa1ab7364c082608140365945",
+      "attempt": 1,
+      "duration_ms": 360,
+      "result_digest": "2f8312dedc0c1497680da7548efe26ab38f0531aae058613af03855e7bc854ee",
+      "success": true,
+      "tool": "grep_documents"
+    }
+  ],
+  "remediation": {
+    "artifacts": [
+      {
+        "path": "models/staging/schema.yml",
+        "purpose": "deprecated column metadata",
+        "sha256": "626894c77fc0e181267eb7ad583d0a51f1ad420cd0ad6ea862acbbe0125e5af3",
+        "unified_diff": "--- a/models/staging/schema.yml\n+++ b/models/staging/schema.yml\n@@ -1,54 +1,70 @@\n version: 2\n-\n models:\n-  - name: stg_orders\n-    description: Typed order events forming the stable commerce analytics contract.\n+- name: stg_orders\n+  description: Typed order events forming the stable commerce analytics contract.\n+  config:\n+    contract:\n+      enforced: true\n+    meta:\n+      data_owner: commerce_analytics\n+      domain: commerce\n+      contract_tier: critical\n+  columns:\n+  - name: order_id\n+    data_type: bigint\n+    description: Stable synthetic order identifier.\n+    data_tests:\n+    - not_null\n+    - unique\n+  - name: customer_id\n+    data_type: varchar\n+    description: Stable synthetic customer identifier.\n+    data_tests:\n+    - not_null\n+  - name: order_date\n+    data_type: date\n+    description: UTC calendar date on which the order was placed.\n+    data_tests:\n+    - not_null\n+  - name: status\n+    data_type: varchar\n+    description: Current order lifecycle state.\n+    data_tests:\n+    - accepted_values:\n+        arguments:\n+          values:\n+          - completed\n+          - pending\n+          - cancelled\n+          - refunded\n+  - name: order_total\n+    description: Deprecated compatibility alias. Use `gross_amount` instead.\n+    meta:\n+      lineageguard:\n+        deprecated: true\n+        replacement: gross_amount\n+        change_id: change-03dc073d2b881401\n+    data_type: decimal(12, 2)\n+    constraints:\n+    - type: not_null\n+    data_tests:\n+    - not_null\n+  - name: currency\n+    data_type: varchar\n+    description: ISO 4217 settlement currency.\n+    data_tests:\n+    - accepted_values:\n+        arguments:\n+          values:\n+          - GBP\n+  - name: gross_amount\n+    data_type: decimal(12, 2)\n+    description: Proposed replacement for the contracted order_total column.\n+    constraints:\n+    - type: not_null\n     config:\n-      contract:\n-        enforced: true\n       meta:\n-        data_owner: commerce_analytics\n-        domain: commerce\n-        contract_tier: critical\n-    columns:\n-      - name: order_id\n-        data_type: bigint\n-        description: Stable synthetic order identifier.\n-        data_tests:\n-          - not_null\n-          - unique\n-      - name: customer_id\n-        data_type: varchar\n-        description: Stable synthetic customer identifier.\n-        data_tests:\n-          - not_null\n-      - name: order_date\n-        data_type: date\n-        description: UTC calendar date on which the order was placed.\n-        data_tests:\n-          - not_null\n-      - name: status\n-        data_type: varchar\n-        description: Current order lifecycle state.\n-        data_tests:\n-          - accepted_values:\n-              arguments:\n-                values: [\"completed\", \"pending\", \"cancelled\", \"refunded\"]\n-      - name: gross_amount\n-        data_type: decimal(12, 2)\n-        description: Proposed replacement for the contracted order_total column.\n-        constraints:\n-          - type: not_null\n-        config:\n-          meta:\n-            semantic_type: monetary_amount\n-            classification: internal\n-        data_tests:\n-          - not_null\n-      - name: currency\n-        data_type: varchar\n-        description: ISO 4217 settlement currency.\n-        data_tests:\n-          - accepted_values:\n-              arguments:\n-                values: [\"GBP\"]\n+        semantic_type: monetary_amount\n+        classification: internal\n+    data_tests:\n+    - not_null"
+      },
+      {
+        "path": "models/staging/stg_orders.sql",
+        "purpose": "compatibility alias",
+        "sha256": "be956f23df9b507a771596ce33e6741a071b78490d34b613372a13cb564a0263",
+        "unified_diff": "--- a/models/staging/stg_orders.sql\n+++ b/models/staging/stg_orders.sql\n@@ -1,10 +1,10 @@\n--- Proposed PR: rename the contracted column without migrating its consumers.\n--- LineageGuard should identify the broken contract before generating a bridge.\n-select\n-    cast(order_id as bigint) as order_id,\n-    cast(customer_id as varchar) as customer_id,\n-    cast(order_date as date) as order_date,\n-    cast(status as varchar) as status,\n-    cast(order_total as decimal(12, 2)) as gross_amount,\n-    cast(currency as varchar) as currency\n-from {{ ref('orders') }}\n+/* Proposed PR: rename the contracted column without migrating its consumers. */ /* LineageGuard should identify the broken contract before generating a bridge. */\n+SELECT\n+  CAST(order_id AS BIGINT) AS order_id,\n+  CAST(customer_id AS TEXT) AS customer_id,\n+  CAST(order_date AS DATE) AS order_date,\n+  CAST(status AS TEXT) AS status,\n+  CAST(order_total AS DECIMAL(12, 2)) AS order_total,\n+  CAST(currency AS TEXT) AS currency,\n+  CAST(order_total AS DECIMAL(12, 2)) AS gross_amount\n+FROM {{ ref('orders') }}"
+      },
+      {
+        "path": "tests/lineageguard_order_total_matches_gross_amount.sql",
+        "purpose": "compatibility equality test",
+        "sha256": "1d1021a1089f466418ff4b1f8f392495ca1d194c0924a9594985ec99f240a51a",
+        "unified_diff": "--- /dev/null\n+++ b/tests/lineageguard_order_total_matches_gross_amount.sql\n@@ -0,0 +1,11 @@\n+-- Generated by LineageGuard; no code was executed during generation.\n+-- Change: change-03dc073d2b881401\n+with compatibility_check as (\n+    select\n+        order_total,\n+        gross_amount\n+    from {{ ref('stg_orders') }}\n+)\n+select *\n+from compatibility_check\n+where order_total is distinct from gross_amount"
+      }
+    ],
+    "baseline_manifest_sha256": "7b01c0cc7d55b84b1f8f9a7d35bf142da76e33fba76ec2584a916878e5d99ef5",
+    "baseline_manifest_summary": "{\"metadata\":{\"adapter_type\":\"duckdb\"},\"nodes\":{\"node.000000\":{\"columns\":{\"currency\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"9daa23aa37de9307c3afa7ffbf73e8225b27bfc6ec462727f2879b64c80eb1f1\"],\"data_type\":\"varchar\",\"name\":\"currency\",\"quote\":false},\"gross_revenue\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"152a1d79539f893f8c3da30bce5332f1247fdac195ea788613710e0e2b0ad210\"],\"data_type\":\"decimal(14, 2)\",\"name\":\"gross_revenue\",\"quote\":false},\"order_count\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"1b524c2398b5b9da964b80a9542dbd1b843ee21fef4b510af14eb0d7debf64ad\"],\"data_type\":\"bigint\",\"name\":\"order_count\",\"quote\":false},\"order_date\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"63fdd82baf92496ebc7670b5f2e15782d012581c0a1411e1a44ca4f3143ddfca\",\"64d569a586220d6275c11b8db7d32f4d309ca60df984327c31c72a66610a73c9\"],\"data_type\":\"date\",\"name\":\"order_date\",\"quote\":false}},\"compiled_code\":\"SELECT 'expression:02b92c6592372f4353c30d10e1fe899d5ae913717ccb51b88be80533f576f78d' AS order_date, 'expression:466e5b9cd57fa444cceaa8e5b053ddd58d05cbbcf162a54d6ccd08492ef36dfd' AS currency, 'expression:b6f8ca52d0bd1f27da60a498192b25b4fa4b8e397985b8ed0668470525f9287c' AS order_count, 'expression:be1a13688120691e8a1cc77496865e2748c38fcb1b355d17cb7cf7ad57122304' AS gross_revenue\",\"config_sha256\":\"6c1bfb4711f79de41713f6c1c4566ca4a8d29c58b0cdbb490723cee9c6c80e47\",\"model_constraints_sha256\":\"6bd33b2c5545453f8e652a3256df8d4b1e25dc6499e92a0b8034bc8d8dc8b854\",\"model_test_evidence_complete\":true,\"model_test_sha256\":[\"466510466f85a3093eef69867bf6365bf53ae13af162c5c29c0db768875e48e4\"],\"query_context_sha256\":\"0a4a467ba3d3eb643475a4bdd8c24d1c7993ef250b3862572c429f79277203f0\",\"relation_name\":\"\\\"acme_commerce\\\".\\\"analytics_marts\\\".\\\"fct_daily_revenue\\\"\",\"resource_type\":\"model\"},\"node.000001\":{\"columns\":{\"currency\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"a2a800f2a8c104b0eca92256dae6d8ebf7d9e1ae65f078f032f3e49fbe4dfa53\"],\"name\":\"currency\",\"quote\":false},\"customer_id\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"295aa38c0b2fc1f9429e60afc7969e03fec2650c999eb8a0ae77d28438fc87c9\"],\"name\":\"customer_id\",\"quote\":false},\"order_date\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"c646c321d505c95b03265b5549e61b08e965bcc8b1f884fdd1518091f1db1e2b\"],\"name\":\"order_date\",\"quote\":false},\"order_id\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"2bde2dc0c51c050364f7f6f2962d871508ff8178984a912cb834f2ec45d86c75\",\"437a5970bc8584cd10502c9e10ad5d0899bfdec4537f221b7461860d114ae3be\"],\"name\":\"order_id\",\"quote\":false},\"order_total\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"258680f68117825b4b10e6305830361bb47a4d5073ff9fdec08352834d6ceb74\"],\"name\":\"order_total\",\"quote\":false},\"status\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"08e9b9beb80623b904ce5649737ed5515aa572e52ec3ac60fe1fcb832693828a\"],\"name\":\"status\",\"quote\":false}},\"config_sha256\":\"a175ba413fb05ad27f116649333970a3cd86c8bf8f45732a4be8e02a3aaaf369\",\"model_constraints_sha256\":\"c516f2599a532fc43668aaabd88b3c7f673e2da257b74f50fc178c6ac7fafa5a\",\"model_test_evidence_complete\":true,\"model_test_sha256\":[\"466510466f85a3093eef69867bf6365bf53ae13af162c5c29c0db768875e48e4\"],\"relation_name\":\"\\\"acme_commerce\\\".\\\"analytics_raw\\\".\\\"orders\\\"\",\"resource_type\":\"seed\"},\"node.000002\":{\"columns\":{\"currency\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"e6c22969572167c0431f349d89498d0b36f9b7ec650ea0aa122bd1e0012a5675\"],\"data_type\":\"varchar\",\"name\":\"currency\",\"quote\":false},\"customer_id\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"81579296265e5c9cca8b7ef980406ed9964c15639e030f6c50d42cac01a86e2e\"],\"data_type\":\"varchar\",\"name\":\"customer_id\",\"quote\":false},\"order_date\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"b8d670dd94d3d89d4c955bc38046a57d7e1af82a808f7e68b6f389eeb7681484\"],\"data_type\":\"date\",\"name\":\"order_date\",\"quote\":false},\"order_id\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"2b32a5fcc59f9c2f97d9800a337179b8e48a92adaeb1c4013342d1ddca41302d\",\"7fd9304ae023e687656f81a9632a29f16a1b1e892f2bdb3649d502cce17f4ced\"],\"data_type\":\"bigint\",\"name\":\"order_id\",\"quote\":false},\"order_total\":{\"constraints\":[{\"sha256\":\"a8803dc678c2873c3cb8008522c488bfce839096c09fe96743269503698ae6b3\",\"type\":\"not_null\"}],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"61d28493c6665816dba986bb14e250a1c5e83a7f41fc5d0d079a9cf8d9efc96a\"],\"data_type\":\"decimal(12, 2)\",\"name\":\"order_total\",\"quote\":false},\"status\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"7f3230c8267e14c227fa121db1b9a21c64ee8cb01fef0f5bb25c18ada982515f\"],\"data_type\":\"varchar\",\"name\":\"status\",\"quote\":false}},\"compiled_code\":\"SELECT 'expression:c304005ef1861a47ba64342e7e09dfe6b4bd526634bfbca43a35b77a101dd560' AS order_id, 'expression:4683e13e8994fdb37ddabfab732c2f363991120515089d02854ada1dd3c9de4c' AS customer_id, 'expression:43f9596761c953eae8acf369a225fee114bf0344144d942633b7847619bf5eb3' AS order_date, 'expression:a2f614a2e34d5c1dccb700735be012913508056f500a0b034d6da872469c579f' AS status, 'expression:09c3bf66b9a72b475d57ddfb37c4ea7e019c796cdbe587e8c1c530753d8ecdbd' AS order_total, 'expression:47423378d0979db91fb7f4e774bab5c68ecc3b15e039aa40d76c22698c01ddec' AS currency\",\"config_sha256\":\"c7a4578bbe062169940cc8e8e88eb00814a1bd331f67a65f0181d5bd64ef8376\",\"model_constraints_sha256\":\"0306af22e17621b7290cf11768ecf86c326e027ffe20ba6be128298ff6beb601\",\"model_test_evidence_complete\":true,\"model_test_sha256\":[\"9a7abefde532622143fa4bfe7b3b5981a4dfd122481c1b089d838f8d01b5cf4f\"],\"query_context_sha256\":\"cea49ca0f39470d975c449bb1aa9fc0f479e324d8e9a328758325856e3d8605b\",\"relation_name\":\"\\\"acme_commerce\\\".\\\"analytics_staging\\\".\\\"stg_orders\\\"\",\"resource_type\":\"model\"}},\"summary_version\":3}",
+    "counterfactual_condition": "RESIDUAL_CHANGES",
+    "counterfactual_evidence_digest": "539ab4b8db911edec035f1417f66af926a38750183b196dda7e9ddd4c118a5fe",
+    "counterfactual_verified": true,
+    "interface_preserved": true,
+    "preserved_contract_sha256": "79f92b2113655e4407ad6798e26b1fefa5b72837f235867d332229d3d7c07643",
+    "preserved_expression_fingerprint": "expression:09c3bf66b9a72b475d57ddfb37c4ea7e019c796cdbe587e8c1c530753d8ecdbd",
+    "preserved_query_context_sha256": "cea49ca0f39470d975c449bb1aa9fc0f479e324d8e9a328758325856e3d8605b",
+    "reason": "Compatibility bridge passed the isolated dbt seed, parse, and build plan.",
+    "residual_changes": [
+      {
+        "change_type": "add_column",
+        "confidence": "high",
+        "evidence": [],
+        "evidence_refs": [
+          "dbt:column-added"
+        ],
+        "id": "change-a785c102e0449f92",
+        "new_column": "gross_amount",
+        "new_nullable": false,
+        "new_type": "DECIMAL(12, 2)",
+        "old_column": null,
+        "old_nullable": null,
+        "old_type": null,
+        "relation": "\"acme_commerce\".\"analytics_staging\".\"stg_orders\"",
+        "source_path": "<verified-counterfactual>"
+      }
+    ],
+    "residual_risk": {
+      "asset_risks": [],
+      "change_ids": [
+        "change-a785c102e0449f92"
+      ],
+      "contributions": [
+        {
+          "asset_urn": null,
+          "category": "severity",
+          "change_id": "change-a785c102e0449f92",
+          "evidence_refs": [
+            "dbt:column-added"
+          ],
+          "explanation": "Worst applicable schema change: add_required_column.",
+          "key": "add_required_column",
+          "points": 12
+        },
+        {
+          "asset_urn": null,
+          "category": "breadth",
+          "change_id": null,
+          "evidence_refs": [],
+          "explanation": "Breadth bonus: round-half-up(3 * log2(1 + 0)), capped at 15.",
+          "key": "round_half_up_log2_one_plus_assets",
+          "points": 0
+        }
+      ],
+      "decision": "PASS",
+      "decision_override": null,
+      "evidence_state": {
+        "assertions": "complete",
+        "catalog": "complete",
+        "lineage": "complete",
+        "ownership": "complete",
+        "records": [
+          {
+            "critical": true,
+            "detail": "dataset=urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_marts.fct_daily_revenue,PROD)",
+            "id": "graphql-assertion:urn:li:assertion:lineageguard.acme.fct_daily_revenue.gross_revenue_not_null",
+            "kind": "assertion",
+            "observed_at": null,
+            "source": "DataHub GraphQL dataset.assertions",
+            "status": "complete"
+          },
+          {
+            "critical": true,
+            "detail": "datasets=2 assertions=1",
+            "id": "graphql-assertions:0a9dfeac21ea07d57d028b69b70f7a6c32472e890eb119ee7539a7afa9799bee:8de36687093fa7baa1ff41bfc8077d531e0c3f64b06a0587bfb8872dbd20cd2c",
+            "kind": "assertion",
+            "observed_at": null,
+            "source": "DataHub GraphQL dataset.assertions",
+            "status": "complete"
+          },
+          {
+            "critical": true,
+            "detail": "enriched=1 expected=1",
+            "id": "mcp-entities:7f14c4c1d0f267589d59c3ec5750bc3e14d1e47c5589c35e19e8eec835977d1e",
+            "kind": "ownership",
+            "observed_at": null,
+            "source": "DataHub MCP get_entities",
+            "status": "complete"
+          },
+          {
+            "critical": true,
+            "detail": "source=urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_staging.stg_orders,PROD) column=order_total assets=1",
+            "id": "mcp-lineage:8a019f756b0b857c4c17fac78e560f2a4af316971afabbe297eb34d4fc5a2be3",
+            "kind": "lineage",
+            "observed_at": null,
+            "source": "DataHub MCP get_lineage",
+            "status": "complete"
+          },
+          {
+            "critical": true,
+            "detail": "dataset=urn:li:dataset:(urn:li:dataPlatform:duckdb,acme_commerce.analytics_staging.stg_orders,PROD) column=order_total",
+            "id": "mcp-schema:b5418aef874cffbfb5310ca0b55f604238eb1a604690aa212b8ddfced3a9ff74",
+            "kind": "catalog",
+            "observed_at": null,
+            "source": "DataHub MCP list_schema_fields",
+            "status": "complete"
+          },
+          {
+            "critical": true,
+            "detail": null,
+            "id": "mcp-traversal:8a019f756b0b857c4c17fac78e560f2a4af316971afabbe297eb34d4fc5a2be3",
+            "kind": "traversal",
+            "observed_at": null,
+            "source": "DataHub MCP get_lineage pagination",
+            "status": "complete"
+          }
+        ],
+        "traversal": "complete"
+      },
+      "impacted_asset_urns": [],
+      "policy_version": "1.0.0",
+      "score": 12,
+      "score_basis_asset_urn": null,
+      "score_decision": "PASS"
+    },
+    "status": "TESTED",
+    "unified_diff": "--- a/models/staging/schema.yml\n+++ b/models/staging/schema.yml\n@@ -1,54 +1,70 @@\n version: 2\n-\n models:\n-  - name: stg_orders\n-    description: Typed order events forming the stable commerce analytics contract.\n+- name: stg_orders\n+  description: Typed order events forming the stable commerce analytics contract.\n+  config:\n+    contract:\n+      enforced: true\n+    meta:\n+      data_owner: commerce_analytics\n+      domain: commerce\n+      contract_tier: critical\n+  columns:\n+  - name: order_id\n+    data_type: bigint\n+    description: Stable synthetic order identifier.\n+    data_tests:\n+    - not_null\n+    - unique\n+  - name: customer_id\n+    data_type: varchar\n+    description: Stable synthetic customer identifier.\n+    data_tests:\n+    - not_null\n+  - name: order_date\n+    data_type: date\n+    description: UTC calendar date on which the order was placed.\n+    data_tests:\n+    - not_null\n+  - name: status\n+    data_type: varchar\n+    description: Current order lifecycle state.\n+    data_tests:\n+    - accepted_values:\n+        arguments:\n+          values:\n+          - completed\n+          - pending\n+          - cancelled\n+          - refunded\n+  - name: order_total\n+    description: Deprecated compatibility alias. Use `gross_amount` instead.\n+    meta:\n+      lineageguard:\n+        deprecated: true\n+        replacement: gross_amount\n+        change_id: change-03dc073d2b881401\n+    data_type: decimal(12, 2)\n+    constraints:\n+    - type: not_null\n+    data_tests:\n+    - not_null\n+  - name: currency\n+    data_type: varchar\n+    description: ISO 4217 settlement currency.\n+    data_tests:\n+    - accepted_values:\n+        arguments:\n+          values:\n+          - GBP\n+  - name: gross_amount\n+    data_type: decimal(12, 2)\n+    description: Proposed replacement for the contracted order_total column.\n+    constraints:\n+    - type: not_null\n     config:\n-      contract:\n-        enforced: true\n       meta:\n-        data_owner: commerce_analytics\n-        domain: commerce\n-        contract_tier: critical\n-    columns:\n-      - name: order_id\n-        data_type: bigint\n-        description: Stable synthetic order identifier.\n-        data_tests:\n-          - not_null\n-          - unique\n-      - name: customer_id\n-        data_type: varchar\n-        description: Stable synthetic customer identifier.\n-        data_tests:\n-          - not_null\n-      - name: order_date\n-        data_type: date\n-        description: UTC calendar date on which the order was placed.\n-        data_tests:\n-          - not_null\n-      - name: status\n-        data_type: varchar\n-        description: Current order lifecycle state.\n-        data_tests:\n-          - accepted_values:\n-              arguments:\n-                values: [\"completed\", \"pending\", \"cancelled\", \"refunded\"]\n-      - name: gross_amount\n-        data_type: decimal(12, 2)\n-        description: Proposed replacement for the contracted order_total column.\n-        constraints:\n-          - type: not_null\n-        config:\n-          meta:\n-            semantic_type: monetary_amount\n-            classification: internal\n-        data_tests:\n-          - not_null\n-      - name: currency\n-        data_type: varchar\n-        description: ISO 4217 settlement currency.\n-        data_tests:\n-          - accepted_values:\n-              arguments:\n-                values: [\"GBP\"]\n+        semantic_type: monetary_amount\n+        classification: internal\n+    data_tests:\n+    - not_null\n--- a/models/staging/stg_orders.sql\n+++ b/models/staging/stg_orders.sql\n@@ -1,10 +1,10 @@\n--- Proposed PR: rename the contracted column without migrating its consumers.\n--- LineageGuard should identify the broken contract before generating a bridge.\n-select\n-    cast(order_id as bigint) as order_id,\n-    cast(customer_id as varchar) as customer_id,\n-    cast(order_date as date) as order_date,\n-    cast(status as varchar) as status,\n-    cast(order_total as decimal(12, 2)) as gross_amount,\n-    cast(currency as varchar) as currency\n-from {{ ref('orders') }}\n+/* Proposed PR: rename the contracted column without migrating its consumers. */ /* LineageGuard should identify the broken contract before generating a bridge. */\n+SELECT\n+  CAST(order_id AS BIGINT) AS order_id,\n+  CAST(customer_id AS TEXT) AS customer_id,\n+  CAST(order_date AS DATE) AS order_date,\n+  CAST(status AS TEXT) AS status,\n+  CAST(order_total AS DECIMAL(12, 2)) AS order_total,\n+  CAST(currency AS TEXT) AS currency,\n+  CAST(order_total AS DECIMAL(12, 2)) AS gross_amount\n+FROM {{ ref('orders') }}\n--- /dev/null\n+++ b/tests/lineageguard_order_total_matches_gross_amount.sql\n@@ -0,0 +1,11 @@\n+-- Generated by LineageGuard; no code was executed during generation.\n+-- Change: change-03dc073d2b881401\n+with compatibility_check as (\n+    select\n+        order_total,\n+        gross_amount\n+    from {{ ref('stg_orders') }}\n+)\n+select *\n+from compatibility_check\n+where order_total is distinct from gross_amount",
+    "verification": {
+      "artifact_digests": [
+        [
+          "models/staging/schema.yml",
+          "626894c77fc0e181267eb7ad583d0a51f1ad420cd0ad6ea862acbbe0125e5af3"
+        ],
+        [
+          "models/staging/stg_orders.sql",
+          "be956f23df9b507a771596ce33e6741a071b78490d34b613372a13cb564a0263"
+        ],
+        [
+          "tests/lineageguard_order_total_matches_gross_amount.sql",
+          "1d1021a1089f466418ff4b1f8f392495ca1d194c0924a9594985ec99f240a51a"
+        ]
+      ],
+      "commands": [
+        {
+          "command": [
+            "dbt",
+            "seed",
+            "--project-dir",
+            ".",
+            "--profiles-dir",
+            ".",
+            "--no-use-colors"
+          ],
+          "duration_ms": 2777,
+          "exit_code": 0,
+          "output_digest": "6d54d1fe9d91e32f5750e12a4c36b2e3077511ba090521e1ecbeeb639c0f7424",
+          "output_tail": "14:49:21  Running with dbt=1.11.12\n14:49:21  Registered adapter: duckdb=1.10.1\n14:49:22  [WARNING]: Constraint types are not supported for view materializations and will\nbe ignored.  Set 'warn_unsupported: false' on this constraint to ignore this\nwarning.\n14:49:22  Found 2 models, 23 data tests, 1 seed, 1 exposure, 485 macros\n14:49:22  \n14:49:22  Concurrency: 1 threads (target='local')\n14:49:22  \n14:49:22  1 of 1 START seed file analytics_raw.orders .................................... [RUN]\n14:49:22  1 of 1 OK loaded seed file analytics_raw.orders ................................ [INSERT 10 in 0.05s]\n14:49:22  \n14:49:22  Finished running 1 seed in 0 hours 0 minutes and 0.17 seconds (0.17s).\n14:49:22  \n14:49:22  Completed successfully\n14:49:22  \n14:49:22  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1"
+        },
+        {
+          "command": [
+            "dbt",
+            "parse",
+            "--project-dir",
+            ".",
+            "--profiles-dir",
+            ".",
+            "--no-use-colors"
+          ],
+          "duration_ms": 2380,
+          "exit_code": 0,
+          "output_digest": "bc09218da36645292c25c1c7d7a960e5cd63aa9fb4dbe42d12b0a05ae89760cc",
+          "output_tail": "14:49:23  Running with dbt=1.11.12\n14:49:23  Registered adapter: duckdb=1.10.1\n14:49:24  [WARNING]: Constraint types are not supported for view materializations and will\nbe ignored.  Set 'warn_unsupported: false' on this constraint to ignore this\nwarning.\n14:49:24  Performance info: ./target/perf_info.json"
+        },
+        {
+          "command": [
+            "dbt",
+            "build",
+            "--project-dir",
+            ".",
+            "--profiles-dir",
+            ".",
+            "--select",
+            "stg_orders+",
+            "--no-use-colors"
+          ],
+          "duration_ms": 3047,
+          "exit_code": 0,
+          "output_digest": "5facd35445a363f6f49afbc43c1412f9f1bd30292600ce7415fcb45061215b63",
+          "output_tail": "g.stg_orders ...................... [RUN]\n14:49:27  1 of 19 OK created sql view model analytics_staging.stg_orders ................. [OK in 0.06s]\n14:49:27  2 of 19 START test accepted_values_stg_orders_currency__GBP .................... [RUN]\n14:49:27  2 of 19 PASS accepted_values_stg_orders_currency__GBP .......................... [PASS in 0.03s]\n14:49:27  3 of 19 START test accepted_values_stg_orders_status__completed__pending__cancelled__refunded  [RUN]\n14:49:27  3 of 19 PASS accepted_values_stg_orders_status__completed__pending__cancelled__refunded  [PASS in 0.01s]\n14:49:27  4 of 19 START test assert_completed_orders_have_positive_totals ................ [RUN]\n14:49:27  4 of 19 PASS assert_completed_orders_have_positive_totals ...................... [PASS in 0.01s]\n14:49:27  5 of 19 START test lineageguard_order_total_matches_gross_amount ............... [RUN]\n14:49:27  5 of 19 PASS lineageguard_order_total_matches_gross_amount ..................... [PASS in 0.01s]\n14:49:27  6 of 19 START test not_null_stg_orders_customer_id ............................. [RUN]\n14:49:27  6 of 19 PASS not_null_stg_orders_customer_id ................................... [PASS in 0.01s]\n14:49:27  7 of 19 START test not_null_stg_orders_gross_amount ............................ [RUN]\n14:49:27  7 of 19 PASS not_null_stg_orders_gross_amount .................................. [PASS in 0.01s]\n14:49:27  8 of 19 START test not_null_stg_orders_order_date .............................. [RUN]\n14:49:27  8 of 19 PASS not_null_stg_orders_order_date .................................... [PASS in 0.01s]\n14:49:27  9 of 19 START test not_null_stg_orders_order_id ................................ [RUN]\n14:49:27  9 of 19 PASS not_null_stg_orders_order_id ...................................... [PASS in 0.01s]\n14:49:27  10 of 19 START test not_null_stg_orders_order_total ............................ [RUN]\n14:49:27  10 of 19 PASS not_null_stg_orders_order_total .................................. [PASS in 0.01s]\n14:49:27  11 of 19 START test unique_stg_orders_order_id ................................. [RUN]\n14:49:27  11 of 19 PASS unique_stg_orders_order_id ....................................... [PASS in 0.01s]\n14:49:27  12 of 19 START sql table model analytics_marts.fct_daily_revenue ............... [RUN]\n14:49:27  12 of 19 OK created sql table model analytics_marts.fct_daily_revenue .......... [OK in 0.10s]\n14:49:27  13 of 19 NO-OP exposure executive_revenue_overview ............................. [NO-OP in 0.00s]\n14:49:27  14 of 19 START test assert_daily_revenue_reconciles ............................ [RUN]\n14:49:27  14 of 19 PASS assert_daily_revenue_reconciles .................................. [PASS in 0.02s]\n14:49:27  15 of 19 START test not_null_fct_daily_revenue_currency ........................ [RUN]\n14:49:27  15 of 19 PASS not_null_fct_daily_revenue_currency .............................. [PASS in 0.01s]\n14:49:27  16 of 19 START test not_null_fct_daily_revenue_gross_revenue ................... [RUN]\n14:49:27  16 of 19 PASS not_null_fct_daily_revenue_gross_revenue ......................... [PASS in 0.02s]\n14:49:27  17 of 19 START test not_null_fct_daily_revenue_order_count ..................... [RUN]\n14:49:27  17 of 19 PASS not_null_fct_daily_revenue_order_count ........................... [PASS in 0.01s]\n14:49:27  18 of 19 START test not_null_fct_daily_revenue_order_date ...................... [RUN]\n14:49:27  18 of 19 PASS not_null_fct_daily_revenue_order_date ............................ [PASS in 0.01s]\n14:49:27  19 of 19 START test unique_fct_daily_revenue_order_date ........................ [RUN]\n14:49:27  19 of 19 PASS unique_fct_daily_revenue_order_date .............................. [PASS in 0.01s]\n14:49:27  \n14:49:27  Finished running 1 exposure, 1 table model, 16 data tests, 1 view model in 0 hours 0 minutes and 0.45 seconds (0.45s).\n14:49:27  \n14:49:27  Completed successfully\n14:49:27  \n14:49:27  Done. PASS=18 WARN=0 ERROR=0 SKIP=0 NO-OP=1 TOTAL=19"
+        }
+      ],
+      "evidence_digest": "8bc728a7915460a739d502cdcb7797e1cc4610ee85b0b91a769b6aae19d162a8",
+      "failure_reason": null,
+      "patched_manifest_sha256": "5862da048c4614927215dc3073b9ea81001d9bd928b570cb6498dc1adfae036c",
+      "patched_manifest_summary": "{\"metadata\":{\"adapter_type\":\"duckdb\"},\"nodes\":{\"node.000000\":{\"columns\":{\"currency\":{\"constraints\":[],\"data_test_evidence_complete\":false,\"data_test_sha256\":[],\"name\":\"currency\",\"quote\":false},\"customer_id\":{\"constraints\":[],\"data_test_evidence_complete\":false,\"data_test_sha256\":[],\"name\":\"customer_id\",\"quote\":false},\"order_date\":{\"constraints\":[],\"data_test_evidence_complete\":false,\"data_test_sha256\":[],\"name\":\"order_date\",\"quote\":false},\"order_id\":{\"constraints\":[],\"data_test_evidence_complete\":false,\"data_test_sha256\":[],\"name\":\"order_id\",\"quote\":false},\"order_total\":{\"constraints\":[],\"data_test_evidence_complete\":false,\"data_test_sha256\":[],\"name\":\"order_total\",\"quote\":false},\"status\":{\"constraints\":[],\"data_test_evidence_complete\":false,\"data_test_sha256\":[],\"name\":\"status\",\"quote\":false}},\"config_sha256\":\"a175ba413fb05ad27f116649333970a3cd86c8bf8f45732a4be8e02a3aaaf369\",\"model_constraints_sha256\":\"c516f2599a532fc43668aaabd88b3c7f673e2da257b74f50fc178c6ac7fafa5a\",\"model_test_evidence_complete\":true,\"model_test_sha256\":[\"466510466f85a3093eef69867bf6365bf53ae13af162c5c29c0db768875e48e4\"],\"relation_name\":\"\\\"acme_commerce\\\".\\\"analytics_raw\\\".\\\"orders\\\"\",\"resource_type\":\"seed\"},\"node.000001\":{\"columns\":{\"currency\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"9daa23aa37de9307c3afa7ffbf73e8225b27bfc6ec462727f2879b64c80eb1f1\"],\"data_type\":\"varchar\",\"name\":\"currency\",\"quote\":false},\"gross_revenue\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"152a1d79539f893f8c3da30bce5332f1247fdac195ea788613710e0e2b0ad210\"],\"data_type\":\"decimal(14, 2)\",\"name\":\"gross_revenue\",\"quote\":false},\"order_count\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"1b524c2398b5b9da964b80a9542dbd1b843ee21fef4b510af14eb0d7debf64ad\"],\"data_type\":\"bigint\",\"name\":\"order_count\",\"quote\":false},\"order_date\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"63fdd82baf92496ebc7670b5f2e15782d012581c0a1411e1a44ca4f3143ddfca\",\"64d569a586220d6275c11b8db7d32f4d309ca60df984327c31c72a66610a73c9\"],\"data_type\":\"date\",\"name\":\"order_date\",\"quote\":false}},\"compiled_code\":\"SELECT 'expression:02b92c6592372f4353c30d10e1fe899d5ae913717ccb51b88be80533f576f78d' AS order_date, 'expression:466e5b9cd57fa444cceaa8e5b053ddd58d05cbbcf162a54d6ccd08492ef36dfd' AS currency, 'expression:b6f8ca52d0bd1f27da60a498192b25b4fa4b8e397985b8ed0668470525f9287c' AS order_count, 'expression:be1a13688120691e8a1cc77496865e2748c38fcb1b355d17cb7cf7ad57122304' AS gross_revenue\",\"config_sha256\":\"6c1bfb4711f79de41713f6c1c4566ca4a8d29c58b0cdbb490723cee9c6c80e47\",\"model_constraints_sha256\":\"6bd33b2c5545453f8e652a3256df8d4b1e25dc6499e92a0b8034bc8d8dc8b854\",\"model_test_evidence_complete\":true,\"model_test_sha256\":[\"466510466f85a3093eef69867bf6365bf53ae13af162c5c29c0db768875e48e4\"],\"query_context_sha256\":\"0a4a467ba3d3eb643475a4bdd8c24d1c7993ef250b3862572c429f79277203f0\",\"relation_name\":\"\\\"acme_commerce\\\".\\\"analytics_marts\\\".\\\"fct_daily_revenue\\\"\",\"resource_type\":\"model\"},\"node.000002\":{\"columns\":{\"currency\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"e6c22969572167c0431f349d89498d0b36f9b7ec650ea0aa122bd1e0012a5675\"],\"data_type\":\"varchar\",\"name\":\"currency\",\"quote\":false},\"customer_id\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"81579296265e5c9cca8b7ef980406ed9964c15639e030f6c50d42cac01a86e2e\"],\"data_type\":\"varchar\",\"name\":\"customer_id\",\"quote\":false},\"gross_amount\":{\"constraints\":[{\"sha256\":\"a8803dc678c2873c3cb8008522c488bfce839096c09fe96743269503698ae6b3\",\"type\":\"not_null\"}],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"5f06a6dd587964c2aa9a6d1b57f9ffe1f07dd8ac6b5675edee4f5b290edc782f\"],\"data_type\":\"decimal(12, 2)\",\"name\":\"gross_amount\",\"quote\":false},\"order_date\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"b8d670dd94d3d89d4c955bc38046a57d7e1af82a808f7e68b6f389eeb7681484\"],\"data_type\":\"date\",\"name\":\"order_date\",\"quote\":false},\"order_id\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"2b32a5fcc59f9c2f97d9800a337179b8e48a92adaeb1c4013342d1ddca41302d\",\"7fd9304ae023e687656f81a9632a29f16a1b1e892f2bdb3649d502cce17f4ced\"],\"data_type\":\"bigint\",\"name\":\"order_id\",\"quote\":false},\"order_total\":{\"constraints\":[{\"sha256\":\"a8803dc678c2873c3cb8008522c488bfce839096c09fe96743269503698ae6b3\",\"type\":\"not_null\"}],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"61d28493c6665816dba986bb14e250a1c5e83a7f41fc5d0d079a9cf8d9efc96a\"],\"data_type\":\"decimal(12, 2)\",\"name\":\"order_total\",\"quote\":false},\"status\":{\"constraints\":[],\"data_test_evidence_complete\":true,\"data_test_sha256\":[\"7f3230c8267e14c227fa121db1b9a21c64ee8cb01fef0f5bb25c18ada982515f\"],\"data_type\":\"varchar\",\"name\":\"status\",\"quote\":false}},\"compiled_code\":\"SELECT 'expression:c304005ef1861a47ba64342e7e09dfe6b4bd526634bfbca43a35b77a101dd560' AS order_id, 'expression:4683e13e8994fdb37ddabfab732c2f363991120515089d02854ada1dd3c9de4c' AS customer_id, 'expression:43f9596761c953eae8acf369a225fee114bf0344144d942633b7847619bf5eb3' AS order_date, 'expression:a2f614a2e34d5c1dccb700735be012913508056f500a0b034d6da872469c579f' AS status, 'expression:09c3bf66b9a72b475d57ddfb37c4ea7e019c796cdbe587e8c1c530753d8ecdbd' AS order_total, 'expression:47423378d0979db91fb7f4e774bab5c68ecc3b15e039aa40d76c22698c01ddec' AS currency, 'expression:09c3bf66b9a72b475d57ddfb37c4ea7e019c796cdbe587e8c1c530753d8ecdbd' AS gross_amount\",\"config_sha256\":\"c7a4578bbe062169940cc8e8e88eb00814a1bd331f67a65f0181d5bd64ef8376\",\"model_constraints_sha256\":\"0306af22e17621b7290cf11768ecf86c326e027ffe20ba6be128298ff6beb601\",\"model_test_evidence_complete\":true,\"model_test_sha256\":[\"699422a5a0a50dccfe938a43f165c4fc711202d40ad64be9e41cf7af64bde633\",\"9a7abefde532622143fa4bfe7b3b5981a4dfd122481c1b089d838f8d01b5cf4f\"],\"query_context_sha256\":\"cea49ca0f39470d975c449bb1aa9fc0f479e324d8e9a328758325856e3d8605b\",\"relation_name\":\"\\\"acme_commerce\\\".\\\"analytics_staging\\\".\\\"stg_orders\\\"\",\"resource_type\":\"model\"}},\"summary_version\":3}",
+      "run_results_digest": "3541b8e6eab944c3dba8274d2f15aeb1b5894d6a6076a4db0676f5d28ffd8b3a",
+      "status": "TESTED",
+      "verified_node_ids": [
+        "model.acme_commerce.fct_daily_revenue",
+        "model.acme_commerce.stg_orders",
+        "test.acme_commerce.accepted_values_stg_orders_currency__GBP.48be9ad506",
+        "test.acme_commerce.accepted_values_stg_orders_status__completed__pending__cancelled__refunded.73a10fb05d",
+        "test.acme_commerce.assert_completed_orders_have_positive_totals",
+        "test.acme_commerce.assert_daily_revenue_reconciles",
+        "test.acme_commerce.lineageguard_order_total_matches_gross_amount",
+        "test.acme_commerce.not_null_fct_daily_revenue_currency.04c841189e",
+        "test.acme_commerce.not_null_fct_daily_revenue_gross_revenue.3ecce5a9ae",
+        "test.acme_commerce.not_null_fct_daily_revenue_order_count.8575ef3525",
+        "test.acme_commerce.not_null_fct_daily_revenue_order_date.b774bf86f4",
+        "test.acme_commerce.not_null_stg_orders_customer_id.af79d5e4b5",
+        "test.acme_commerce.not_null_stg_orders_gross_amount.8ab6b35cb4",
+        "test.acme_commerce.not_null_stg_orders_order_date.2177a3e8bb",
+        "test.acme_commerce.not_null_stg_orders_order_id.81cfe2fe64",
+        "test.acme_commerce.not_null_stg_orders_order_total.388b18e031",
+        "test.acme_commerce.unique_fct_daily_revenue_order_date.8ba2134790",
+        "test.acme_commerce.unique_stg_orders_order_id.e3b841c71a"
+      ]
+    }
+  },
+  "run_id": "lg-3d10638807e88502",
+  "schema_version": "1.1",
+  "status": "COMPLETE",
+  "writeback": {
+    "document_urn": "urn:li:document:shared-99a4a464-6f14-4b3c-8794-adb3f60b212e",
+    "mutation_digests": [
+      "4b15d4a404c113e749d47a08ab290f0d48fdf0544ceccae939f186fa06a9f88b",
+      "556653a9235c31bf95b83323bb405f7ce84a80012c87e4f3899b95e3f413994b",
+      "94c4904edeb0260d91b4434eac37d75fd48260b69f0a5e6547d8855d8190ac2d",
+      "dbcdc71eec847751baeb795906b2392d0eb79612fac99bd5bab46f37c1ff81e2",
+      "d4c6843d63abba9998bf54287346adf7e640263dd288398d222ab1efd26c42f4"
+    ],
+    "readback_digests": [
+      "85b91498e3a5ec7ceb1c48e1ee9fb214d526cac4f71eed1a470761a82cf4df02",
+      "9936f33a818ed0df8e086e1fabdb3753ea41890e2264352b0c1211db7868c306",
+      "9b6b16da20d19d254e6a32cd39a3390efba6990a843de3a4b4d60185ca07228d",
+      "2f8312dedc0c1497680da7548efe26ab38f0531aae058613af03855e7bc854ee",
+      "5fc194f275f1a583a2dff634b4aae312fe88cb7dd304291109f57de7018e5db6",
+      "ccc79d5888cd75c46b18d12266df6039e74b6468f8904cce7e17f0cb75af78ee",
+      "2f8312dedc0c1497680da7548efe26ab38f0531aae058613af03855e7bc854ee"
+    ],
+    "reason": null,
+    "state": "VERIFIED"
+  }
+}

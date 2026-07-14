@@ -1,0 +1,25 @@
+LineageGuard PR Agent
+
+DRAFT STATUS: Prepared from the retained verified run. Personal entry by Lewis McGuire, sole entrant; authority to submit the included code and assets confirmed. Add final public links before submission.
+
+LineageGuard is a provider-agnostic CLI PR gate for compiled dbt schema changes. It turns DataHub context into tested remediation work.
+
+A proposed rename is compiled into a normalized schema delta. LineageGuard uses DataHub Core through the official MCP Server to verify the catalog baseline, trace downstream column lineage and enrich affected datasets with owners and governance evidence. A narrow read-only GraphQL gap adapter retrieves native DataHub Assertion definitions absent from the pinned stable MCP release. A deterministic policy produces an evidence-linked risk score and a fail-closed PR decision.
+
+For a proven column rename, LineageGuard generates a bounded compatibility bridge, deprecation metadata and an equality test. It applies the patch only inside a temporary copy, strips credentials from the dbt environment and runs a fixed seed, parse and build plan. It then compares the verified compiled future with the original manifest. A final PASS_WITH_REMEDIATION is possible only when the original interface remains intact and the residual change independently passes the policy.
+
+LineageGuard closes the loop by writing the original and residual scores, final decision, remediation state, evidence hash and source commit into DataHub through MCP. It adds a decision tag and related change passport, reads the required machine fields, tag and document identity back through MCP, and remains WRITEBACK_PENDING if any required value is missing.
+
+The demo uses a fully synthetic Acme commerce project. A proposed order_total to gross_amount rename breaks a downstream finance model. The seeded DataHub graph contains the revenue mart, related dbt job, chart, executive dashboard, owners and a native not-null assertion. The retained agent evidence scores the downstream mart using its finance owner, assertion and direct column lineage: the proposal is 88/100 BLOCK, the tested bridge leaves a 12/100 PASS residual, and the final PASS_WITH_REMEDIATION passport reads back as VERIFIED.
+
+The project is implemented in Python with DataHub Core v1.6.0, the official mcp-server-datahub 0.6.0, dbt and DuckDB. The deterministic core derives every lineage, risk, test and writeback claim from recorded evidence. It includes a local change flight recorder, Apache 2.0 licensing, project provenance, a reproducible synthetic seed, 528 offline tests, three dbt/DuckDB integration tests and a live Core/MCP writeback-readback smoke test.
+
+Categories
+
+Agents That Do Real Work
+
+Metadata-Aware Code Generation & Development
+
+What makes it different
+
+Impact reports stop at describing a problem. LineageGuard uses the same context graph to create migration work, execute the checks, inspect the compiled future, rescore the remaining risk and persist the verified outcome for the next human or agent.

@@ -1,0 +1,8 @@
+acme_commerce:
+  target: local
+  outputs:
+    local:
+      type: duckdb
+      path: target/acme_commerce.duckdb
+      schema: analytics
+      threads: 1

@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "adapter_type": "duckdb"
+  },
+  "nodes": {
+    "model.lineageguard.ambiguous": {
+      "resource_type": "model",
+      "relation_name": "analytics.ambiguous_orders",
+      "columns": {
+        "legacy_total_a": {
+          "name": "legacy_total_a",
+          "data_type": "decimal(12, 2)"
+        },
+        "legacy_total_b": {
+          "name": "legacy_total_b",
+          "data_type": "decimal(12, 2)"
+        }
+      },
+      "compiled_code": "select order_total as legacy_total_a, order_total as legacy_total_b from raw.orders"
+    }
+  }
+}
