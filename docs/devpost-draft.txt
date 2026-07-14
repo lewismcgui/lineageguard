@@ -1,6 +1,6 @@
 LineageGuard PR Agent
 
-DRAFT STATUS: Prepared from the retained verified run. Personal entry by Lewis McGuire, sole entrant; authority to submit the included code and assets confirmed. Add final public links before submission.
+DRAFT STATUS: Prepared from the retained verified run. Personal entry by Lewis McGuire, sole entrant; authority to submit the included code and assets confirmed. Public repository: https://github.com/lewismcgui/lineageguard
 
 LineageGuard is a provider-agnostic CLI PR gate for compiled dbt schema changes. It turns DataHub context into tested remediation work.
 

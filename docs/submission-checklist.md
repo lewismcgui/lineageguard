@@ -37,7 +37,7 @@
       commit.
 - [x] Freeze exact live metrics from the retained `VERIFIED` artifact.
 - [x] Re-check official rules and the 2026-08-10 22:00 BST deadline.
-- [ ] Make Apache-2.0 visible in the public repository About section.
+- [x] Make Apache-2.0 visible in the public repository About section.
 - [ ] Confirm the public demo video contains no unauthorized trademarks,
       copyrighted music, or other third-party material.
 - [ ] Keep the working project available free of charge and without restriction
@@ -53,8 +53,8 @@
 
 - [ ] Register for the competition.
 - [ ] Accept the competition terms.
-- [ ] Create or publish the public repository.
-- [ ] Push any branch or tag to a public remote.
+- [x] Create or publish the public repository.
+- [x] Push the audited `main` branch to the public remote.
 - [ ] Deploy the review app publicly.
 - [ ] Upload or publish the demonstration video.
 - [ ] Spend money on hosting, domains, tools, or services.
